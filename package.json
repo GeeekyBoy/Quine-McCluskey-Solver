@@ -1,0 +1,29 @@
+{
+  "name": "1lpq0",
+  "version": "0.0.2477",
+  "description": "hello world starter",
+  "keywords": [
+    "react",
+    "material"
+  ],
+  "homepage": "https://codesandbox.io/s/4j7m47vlm4",
+  "main": "index.js",
+  "dependencies": {
+    "@emotion/react": "11.1.2",
+    "@emotion/styled": "11.0.0",
+    "@material-ui/core": "5.0.0-alpha.18",
+    "@material-ui/icons": "5.0.0-alpha.19",
+    "hookrouter": "1.2.5",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
