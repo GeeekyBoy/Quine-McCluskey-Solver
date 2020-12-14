@@ -25,6 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - run : cd ./src
+        shell: bash
+      - run : npm i
+        shell: bash
       - run: npm ci
         shell: bash
       - run: npm run build
