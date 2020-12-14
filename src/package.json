@@ -6,7 +6,7 @@
     "react",
     "material"
   ],
-  "homepage": "https://codesandbox.io/s/4j7m47vlm4",
+  "homepage": "https://geeekyboy.github.io/Quine-McCluskey-Solver",
   "main": "index.js",
   "dependencies": {
     "@emotion/react": "11.1.2",
