@@ -46,7 +46,7 @@ export default function () {
       if (donotCares.length > 0) {
         varStore.initDonotCares = donotCares.match(new RegExp("[0-9]+", "g")).map(x => parseInt(x, 10));
       }
-      navigate("/letters");
+      navigate(`${process.env.NODE_ENV === "development" ? "" : process.env.PUBLIC_URL}/letters`);
     }
   };
   document.body.classList.add(useStyles().centeringRoot);
