@@ -18,7 +18,7 @@
     "react-dom": "latest"
   },
   "devDependencies": {
-    "react-scripts": "1.0.0"
+    "react-scripts": "4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
