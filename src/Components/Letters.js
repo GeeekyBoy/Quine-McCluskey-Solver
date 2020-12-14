@@ -46,7 +46,7 @@ export default function () {
       setErrMsg(`You have to name just ${varStore.initInputsNumber} inputs !`);
     } else if (!errMsg) {
       varStore.initInputLetters = letters.split("");
-      navigate("/result");
+      navigate(`${process.env.NODE_ENV === "development" ? "" : process.env.PUBLIC_URL}/result`);
     }
   };
   document.body.classList.add(useStyles().centeringRoot);
