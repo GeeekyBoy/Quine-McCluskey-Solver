@@ -48,7 +48,7 @@ export default function () {
       varStore.initInputLetters = letters.split("");
       navigate(`${process.env.NODE_ENV === "development" ? "" : process.env.PUBLIC_URL}/result`);
     }
-  };
+  }
   document.body.classList.add(useStyles().centeringRoot);
   document.getElementById("app").classList.add(useStyles().ceneredContainer);
   return (
