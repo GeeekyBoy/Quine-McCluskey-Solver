@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import useStyles from "./styles";
-import { useRoutes } from "hookrouter";
+import { HashRouter, useRoutes } from "react-router-dom";
 import routes from "./Utils/routes";
 
 function App() {
@@ -11,4 +11,9 @@ function App() {
   return routeResult;
 }
 
-ReactDOM.render(<App />, document.querySelector("#app"));
+ReactDOM.render(
+  <HashRouter>
+    <App />
+  </HashRouter>,
+  document.querySelector("#app")
+);

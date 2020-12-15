@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import useStyles from "../styles";
 import Paper from "@material-ui/core/Paper";
-import { navigate } from "hookrouter";
+import { useNavigate } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
 import CalculateRounded from "@material-ui/icons/CalculateRounded";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import varStore from "../Utils/varStore";
 export default function () {
-  const classes = useStyles();
+  const classes = useStyles();  
+  const navigate = useNavigate();
   varStore.initInputsNumber =
     parseInt(
       Math.log2(
@@ -46,9 +47,9 @@ export default function () {
       setErrMsg(`You have to name just ${varStore.initInputsNumber} inputs !`);
     } else if (!errMsg) {
       varStore.initInputLetters = letters.split("");
-      navigate(`${process.env.NODE_ENV === "development" ? "" : process.env.PUBLIC_URL}/result`);
+      navigate("/result");
     }
-  }
+  };
   document.body.classList.add(useStyles().centeringRoot);
   document.getElementById("app").classList.add(useStyles().ceneredContainer);
   return (

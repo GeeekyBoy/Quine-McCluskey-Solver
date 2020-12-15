@@ -1,7 +1,7 @@
 {
-  "name": "1lpq0",
+  "name": "Quine-McCluskey-Solver",
   "version": "0.0.2477",
-  "description": "hello world starter",
+  "description": "Online Quine McCluskey Solver !",
   "keywords": [
     "react",
     "material"
@@ -13,9 +13,10 @@
     "@emotion/styled": "11.0.0",
     "@material-ui/core": "5.0.0-alpha.18",
     "@material-ui/icons": "5.0.0-alpha.19",
-    "hookrouter": "1.2.5",
+    "history": "5.0.0",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "17.0.1",
+    "react-router-dom": "6.0.0-beta.0"
   },
   "devDependencies": {
     "react-scripts": "4.0.1"

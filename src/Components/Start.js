@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useStyles from "../styles";
-import { navigate } from "hookrouter";
+import { useNavigate } from 'react-router-dom';
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import ArrowForwardRounded from "@material-ui/icons/ArrowForwardRounded";
@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import varStore from "../Utils/varStore";
 export default function () {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [isMintermsChanged, setIsMintermsChanged] = useState(false);
   const [minterms, setMinterms] = useState("");
   const [donotCares, setDonotCares] = useState("");
@@ -46,7 +47,7 @@ export default function () {
       if (donotCares.length > 0) {
         varStore.initDonotCares = donotCares.match(new RegExp("[0-9]+", "g")).map(x => parseInt(x, 10));
       }
-      navigate(`${process.env.NODE_ENV === "development" ? "" : process.env.PUBLIC_URL}/letters`);
+      navigate("/letters");
     }
   };
   document.body.classList.add(useStyles().centeringRoot);
