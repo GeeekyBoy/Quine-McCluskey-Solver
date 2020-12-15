@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 export default function (props) {
   return (
-    <Card>
+    <Card style={{ backgroundColor: "#344955", color: "#FFFFFF" }}>
       <CardContent align="center">
         <Typography variant="h4">
           <b>The Prime Implicants Are</b>

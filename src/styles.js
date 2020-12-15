@@ -14,10 +14,11 @@ export default makeStyles({
     justifyContent: "center"
   },
   ceneredContainer: {
-    alignSelf: "center"
+    alignSelf: "center",
+    width: "80%"
   },
   startContainer: {
-    maxWidth: 350
+    minWidth: "100%"
   },
   startContainerItem: {
     "& .MuiTextField-root": {

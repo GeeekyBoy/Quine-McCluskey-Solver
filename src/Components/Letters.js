@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import useStyles from "../styles";
 import Paper from "@material-ui/core/Paper";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import CalculateRounded from "@material-ui/icons/CalculateRounded";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import varStore from "../Utils/varStore";
 export default function () {
-  const classes = useStyles();  
+  const classes = useStyles();
   const navigate = useNavigate();
   varStore.initInputsNumber =
     parseInt(
@@ -56,7 +56,9 @@ export default function () {
     <Paper className={classes.startContainer}>
       <form noValidate autoComplete="off">
         <div className={classes.startContainerItem}>
-          <Typography variant="h4">Name The Inputs</Typography>
+          <center>
+            <Typography variant="h4">Name The Inputs</Typography>
+          </center>
         </div>
         <div className={classes.startContainerItem}>
           <TextField

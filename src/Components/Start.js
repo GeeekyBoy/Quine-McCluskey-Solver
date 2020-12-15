@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import useStyles from "../styles";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 import ArrowForwardRounded from "@material-ui/icons/ArrowForwardRounded";
+import Favorite from "@material-ui/icons/Favorite";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import varStore from "../Utils/varStore";
@@ -15,6 +19,7 @@ export default function () {
   const [donotCares, setDonotCares] = useState("");
   const [mintermsErrMsg, setMintermsErrMsg] = useState(null);
   const [donotCaresErrMsg, setDonotCaresErrMsg] = useState(null);
+  const [isComplementAvail, setIsComplementAvail] = useState(false);
   const handleMintermsChange = (event) => {
     setIsMintermsChanged(true);
     setMinterms(event.target.value);
@@ -38,15 +43,23 @@ export default function () {
       setDonotCaresErrMsg(null);
     }
   };
+  const handleComplementAvailChange = (event) => {
+    setIsComplementAvail(event.target.checked);
+  };
   const nextPage = (event) => {
     event.preventDefault();
     if (!isMintermsChanged) {
       setMintermsErrMsg(`Please enter minterms !`);
     } else if (!mintermsErrMsg && !donotCaresErrMsg) {
-      varStore.initMinterms = minterms.match(new RegExp("[0-9]+", "g")).map(x => parseInt(x, 10));
+      varStore.initMinterms = minterms
+        .match(new RegExp("[0-9]+", "g"))
+        .map((x) => parseInt(x, 10));
       if (donotCares.length > 0) {
-        varStore.initDonotCares = donotCares.match(new RegExp("[0-9]+", "g")).map(x => parseInt(x, 10));
+        varStore.initDonotCares = donotCares
+          .match(new RegExp("[0-9]+", "g"))
+          .map((x) => parseInt(x, 10));
       }
+      varStore.isComplementAvail = isComplementAvail;
       navigate("/letters");
     }
   };
@@ -56,7 +69,9 @@ export default function () {
     <Paper className={classes.startContainer}>
       <form noValidate autoComplete="off">
         <div className={classes.startContainerItem}>
-          <Typography variant="h4">Enter Function Information</Typography>
+          <center>
+            <Typography variant="h4">Enter Function Information</Typography>
+          </center>
         </div>
         <div className={classes.startContainerItem}>
           <TextField
@@ -79,6 +94,20 @@ export default function () {
           />
         </div>
         <div className={classes.startContainerItem}>
+          <FormGroup row>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={isComplementAvail}
+                  onChange={handleComplementAvailChange}
+                  name="complementedAvailbility"
+                />
+              }
+              label="Complemented form is available"
+            />
+          </FormGroup>
+        </div>
+        <div className={classes.startContainerItem}>
           <center>
             <Button
               endIcon={<ArrowForwardRounded />}
@@ -88,6 +117,13 @@ export default function () {
             >
               Next
             </Button>
+          </center>
+        </div>
+        <div className={classes.startContainerItem}>
+          <center>
+            <Typography>
+              Made With <span style={{ color: "#FF0000" }}>❤</span> In Egypt
+            </Typography>
           </center>
         </div>
       </form>

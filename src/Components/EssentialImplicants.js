@@ -4,14 +4,18 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 export default function (props) {
   return (
-    <Card>
+    <Card style={{ backgroundColor: "#0336FF", color: "#FFFFFF" }}>
       <CardContent align="center">
         <Typography variant="h4">
-          <b>Possible Function Minimizations</b>
+          <b>
+            {props.essentials.length > 0
+              ? "The Essential Implicants Are"
+              : "No Essential Implicants Found"}
+          </b>
         </Typography>
-        {props.minimizations.map((minimization) => (
-          <Typography variant="h4">{minimization.join(" + ")}</Typography>
-        ))}
+        {props.essentials.length > 0 && (
+          <Typography variant="h4">{props.essentials.join(", ")}</Typography>
+        )}
       </CardContent>
     </Card>
   );
