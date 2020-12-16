@@ -1,10 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
-export default makeStyles({
+import BG from "./Utils/background";
+export default makeStyles((theme) => ({
   root: {
-    backgroundImage: "url(https://source.unsplash.com/user/erondu/1600x900)",
+    backgroundImage: `url(${BG})`,
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    overflowX: "hidden"
   },
   centeringRoot: {
     width: "100%",
@@ -15,7 +17,8 @@ export default makeStyles({
   },
   ceneredContainer: {
     alignSelf: "center",
-    width: "80%"
+    width: "80%",
+    maxWidth: 600
   },
   startContainer: {
     minWidth: "100%"
@@ -30,24 +33,50 @@ export default makeStyles({
     margin: "0 auto"
   },
   gridItem: {
-    margin: 10
+    margin: "2vw auto",
+    width: "30vw",
+    [theme.breakpoints.down("sm")]: {
+      width: "90vw"
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "45vw"
+    }
   },
   table: {
-    "& .MuiTableCell-head": { fontWeight: "bold" },
-    minWidth: 300
+    "& .MuiTableHead-root": {
+      backgroundColor: "#073042",
+      "& .MuiTableCell-head": {
+        color: "#FFFFFF",
+        fontWeight: "bold"
+      }
+    },
+    "& .MuiTableBody-root": {
+      "& .MuiTableCell-body": {
+        color: "#073042",
+        fontWeight: "bold"
+      }
+    },
+    minWidth: 300,
+    borderCollapse: "unset!important"
   },
   cancelled: {
-    backgroundColor: "#FFFF00"
+    backgroundColor: "#073042!important",
+    color: "#3DDC84!important"
   },
   single: {
-    color: "#FF0000",
+    color: "#F86734!important",
     fontWeight: "bold"
   },
   dashedBorder: {
-    border: "dashed!important"
+    border: "dashed!important",
+    borderColor: "#3DDC84!important"
   },
   redBorder: {
-    borderColor: "#FF0000!important",
+    borderColor: "#F86734!important",
     borderWidth: "thick!important"
+  },
+  numberedBG: {
+    backgroundPosition: "left bottom, center!important",
+    backgroundRepeat: "no-repeat, repeat!important"
   }
-});
+}));

@@ -8,17 +8,19 @@ import SelectionTable from "../Components/SelectionTable";
 import EssentialImplicants from "../Components/EssentialImplicants";
 import MinimizedFunction from "../Components/MinimizedFunction";
 import PetrickMethod from "../Components/PetrickMethod";
-import FunctionNotation from "../Components/FunctionNotation"
+import FunctionNotation from "../Components/FunctionNotation";
 import colsParser from "../Utils/colsParser";
 import cloneObject from "../Utils/cloneObject";
+import varStore from "../Utils/varStore";
 import { appendStep } from "../Components/Result";
 export default function () {
   let essentials = [];
   let prevPrimes;
-  appendStep(<FunctionNotation />)
+  appendStep(<FunctionNotation index={varStore.currentStep++} />);
   let primes = getReadablePrimeImplicants();
   appendStep(
     <SelectionTable
+      index={varStore.currentStep++}
       availCols={Object.keys(colsParser(cloneObject(primes)))
         .map((x) => parseInt(x, 10))
         .sort()}
@@ -44,11 +46,17 @@ export default function () {
       break;
     }
   } while (JSON.stringify(primes) !== JSON.stringify(prevPrimes));
-  appendStep(<EssentialImplicants essentials={cloneObject(essentials)} />);
+  appendStep(
+    <EssentialImplicants
+      index={varStore.currentStep++}
+      essentials={cloneObject(essentials)}
+    />
+  );
   if (primes.length > 0) {
     const petrickMethodResult = applyPetrickMethod(cloneObject(primes));
     appendStep(
       <PetrickMethod
+        index={varStore.currentStep++}
         stepsData={petrickMethodResult.steps}
         mapping={petrickMethodResult.primesPetrickMapping}
       />
@@ -61,6 +69,11 @@ export default function () {
   if (typeof essentials[0] !== "object") {
     essentials = [essentials];
   }
-  appendStep(<MinimizedFunction minimizations={essentials} />);
+  appendStep(
+    <MinimizedFunction
+      index={varStore.currentStep++}
+      minimizations={essentials}
+    />
+  );
   return essentials;
 }

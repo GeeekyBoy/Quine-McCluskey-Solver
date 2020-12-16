@@ -15,6 +15,7 @@
     "@material-ui/icons": "5.0.0-alpha.19",
     "fontsource-rubik": "3.1.6",
     "history": "5.0.0",
+    "masonic": "3.3.10",
     "react": "latest",
     "react-dom": "17.0.1",
     "react-router-dom": "6.0.0-beta.0"

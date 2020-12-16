@@ -2,6 +2,7 @@ import React from "react";
 import SelectionTable from "../Components/SelectionTable";
 import colsParser from "../Utils/colsParser";
 import { appendStep } from "../Components/Result";
+import varStore from "../Utils/varStore";
 export default function (primes) {
   const colImplicants = [];
   let dominatingCols = [];
@@ -30,6 +31,7 @@ export default function (primes) {
   if (JSON.stringify(prevPrimes) !== JSON.stringify(primes)) {
     appendStep(
       <SelectionTable
+        index={varStore.currentStep++}
         availCols={Object.keys(colsParser(prevPrimes))
           .map((x) => parseInt(x, 10))
           .sort()}
@@ -41,6 +43,7 @@ export default function (primes) {
     if (primes.length > 0) {
       appendStep(
         <SelectionTable
+          index={varStore.currentStep++}
           availCols={Object.keys(colsParser(primes))
             .map((x) => parseInt(x, 10))
             .sort()}

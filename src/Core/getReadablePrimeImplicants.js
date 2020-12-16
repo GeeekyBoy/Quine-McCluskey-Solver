@@ -33,6 +33,11 @@ export default function () {
     }
   }
   primes = primes.filter((x) => x !== null);
-  appendStep(<PrimeImplicants implicants={alphabiticalImplicants} />);
+  appendStep(
+    <PrimeImplicants
+      index={varStore.currentStep++}
+      implicants={alphabiticalImplicants}
+    />
+  );
   return primes;
 }
