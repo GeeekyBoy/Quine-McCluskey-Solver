@@ -1,7 +1,5 @@
 import React from "react";
 import useStyles from "../styles";
-import { makeStyles } from "@material-ui/core/styles";
-import numberToImage from "../Utils/numberToImg";
 import Table from "@material-ui/core/Table";
 import Typography from "@material-ui/core/Typography";
 import TableBody from "@material-ui/core/TableBody";
@@ -10,20 +8,26 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Toolbar from "@material-ui/core/Toolbar";
 export default function (props) {
-  const useAditionalStyles = makeStyles({
-    BG: { background: `#D7EFFE url(${numberToImage(props.index.toString())})` },
-    cancelledBG: {
-      background: `#073042 url(${numberToImage(props.index.toString())})`
-    }
-  });
   const classes = useStyles();
-  const additionalClasses = useAditionalStyles();
+  const title = () => {
+    if (props.extractSingles) {
+      return "Finding Unique Minterms";
+    } else if (props.columnDominance) {
+      return "Applying Column Dominance";
+    } else if (props.rowDominance) {
+      return "Applying Row Dominance";
+    } else {
+      return "Prime Implicants Chart";
+    }
+  };
   return (
-    <TableContainer component={Paper}>
-      <Table
-        className={`${classes.table} ${classes.numberedBG} ${additionalClasses.BG}`}
-      >
+    <TableContainer component={Paper} className={classes.table}>
+      <Toolbar>
+        <Typography>{`${props.index}. ${title()}`}</Typography>
+      </Toolbar>
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell align="center">Minterms</TableCell>
@@ -56,17 +60,7 @@ export default function (props) {
                     props.stepsData.includes(primeImplicant[1]))
                 ) {
                   return (
-                    <TableCell
-                      align="center"
-                      className={`${classes.cancelled} ${
-                        primeImplicant[1] ===
-                        props.primeImplicants[
-                          props.primeImplicants.length - 1
-                        ][1]
-                          ? `${classes.numberedBG} ${additionalClasses.cancelledBG}`
-                          : null
-                      }`}
-                    >
+                    <TableCell align="center" className={classes.cancelled}>
                       {primeImplicant[1]}
                     </TableCell>
                   );
@@ -107,9 +101,7 @@ export default function (props) {
                         align="center"
                         className={`${classes.cancelled} ${classes.dashedBorder} ${classes.redBorder}`}
                       >
-                        <Typography variant="body" className={classes.single}>
-                          X
-                        </Typography>
+                        <Typography className={classes.single}>X</Typography>
                       </TableCell>
                     );
                   } else {
@@ -131,9 +123,11 @@ export default function (props) {
                     props.stepsData.includes(primeImplicant[1])) ||
                   (props.columnDominance && props.stepsData.includes(availCol))
                 ) {
-                  <TableCell align="center" className={classes.cancelled}>
-                    {primeImplicant[0].includes(availCol) ? "X" : ""}
-                  </TableCell>;
+                  return (
+                    <TableCell align="center" className={classes.cancelled}>
+                      {primeImplicant[0].includes(availCol) ? "X" : ""}
+                    </TableCell>
+                  );
                 } else {
                   return (
                     <TableCell align="center">

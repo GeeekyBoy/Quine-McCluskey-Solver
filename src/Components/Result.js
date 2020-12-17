@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import minimizeFunction from "../Core/minimizeFunction";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { Masonry } from "masonic";
+import Fade from "react-reveal/Fade";
 import useStyles from "../styles";
 export let appendStep = () => {};
+export let setIsResultShown = () => {};
 
-const MasonryCard = ({ index, data, width }) => <>{data}</>;
 export default function () {
   const classes = useStyles();
-  const theme = useTheme();
-  const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const matchesMd = useMediaQuery(theme.breakpoints.down("md"));
+  const [isShown, setIsShown] = useState(true);
   const [children, setChildren] = useState([]);
+  setIsResultShown = setIsShown;
   appendStep = (child) => {
     setChildren((oldChildren) => [
       ...oldChildren,
-      <div className={classes.gridItem}>{child}</div>
+      <div
+        className={classes.gridItem}
+        key={"_" + Math.random().toString(36).substr(2, 9)}
+      >
+        {child}
+      </div>
     ]);
   };
   document.body.classList.remove(useStyles().centeringRoot);
@@ -25,10 +27,10 @@ export default function () {
     minimizeFunction();
   }, []);
   return (
-    <Masonry
-      items={children}
-      render={MasonryCard}
-      columnCount={matchesSm ? 1 : matchesMd ? 2 : 3}
-    />
+    <div className={classes.Masonry}>
+      <Fade duration={500} bottom cascade opposite appear when={isShown}>
+        <div>{children}</div>
+      </Fade>
+    </div>
   );
 }

@@ -13,7 +13,8 @@ export default makeStyles((theme) => ({
     display: "flex",
     height: "100vh",
     margin: 0,
-    justifyContent: "center"
+    justifyContent: "center",
+    overflow: "hidden"
   },
   ceneredContainer: {
     alignSelf: "center",
@@ -34,15 +35,18 @@ export default makeStyles((theme) => ({
   },
   gridItem: {
     margin: "2vw auto",
-    width: "30vw",
-    [theme.breakpoints.down("sm")]: {
-      width: "90vw"
-    },
-    [theme.breakpoints.between("sm", "md")]: {
-      width: "45vw"
-    }
+    width: "90vw",
+    maxWidth: 600
   },
   table: {
+    "& .MuiToolbar-root": {
+      backgroundColor: "#073042",
+      justifyContent: "center",
+      "& .MuiTypography-root": {
+        fontWeight: "bold",
+        color: "#FFFFFF"
+      }
+    },
     "& .MuiTableHead-root": {
       backgroundColor: "#073042",
       "& .MuiTableCell-head": {
@@ -51,6 +55,7 @@ export default makeStyles((theme) => ({
       }
     },
     "& .MuiTableBody-root": {
+      backgroundColor: "#D7EFFE",
       "& .MuiTableCell-body": {
         color: "#073042",
         fontWeight: "bold"
@@ -61,7 +66,8 @@ export default makeStyles((theme) => ({
   },
   cancelled: {
     backgroundColor: "#073042!important",
-    color: "#3DDC84!important"
+    color: "#3DDC84!important",
+    borderBottom: "none!important"
   },
   single: {
     color: "#F86734!important",
@@ -78,5 +84,21 @@ export default makeStyles((theme) => ({
   numberedBG: {
     backgroundPosition: "left bottom, center!important",
     backgroundRepeat: "no-repeat, repeat!important"
+  },
+  petrickCard: {
+    background: "#D7EFFE",
+    "& .MuiTypography-root": {
+      color: "#073042"
+    }
+  },
+  newFunctionBtn: {
+    "& .MuiTypography-root": {
+      color: "#000000",
+      fontWeight: "bold"
+    }
+  },
+  logo: {
+    fontWeight: "900!important",
+    marginBottom: "10px!important"
   }
 }));
