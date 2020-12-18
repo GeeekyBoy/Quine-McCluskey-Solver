@@ -37,7 +37,7 @@ export default function (props) {
               : ""
           }`}</b>
         </Typography>
-        <Button className={classes.newFunctionBtn} onClick={handleNewFunction}>
+        <Button variant="outlined" className={classes.newFunctionBtn} onClick={handleNewFunction}>
           <Typography>New Function</Typography>
         </Button>
       </CardContent>

@@ -30,7 +30,7 @@ export default function (props) {
             <TableRow key={row.binary}>
               <TableCell align="center">{row.group}</TableCell>
               <TableCell align="center">{row.decimal}</TableCell>
-              <TableCell align="center">{row.binary}</TableCell>
+              <TableCell align="center">{row.binary}  {props.primes.includes(row.binary) ? "✹" : "✓"}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -95,7 +95,9 @@ export default makeStyles((theme) => ({
     "& .MuiTypography-root": {
       color: "#000000",
       fontWeight: "bold"
-    }
+    },
+    marginTop: "10px!important",
+    border: "1px solid #00000080!important"
   },
   logo: {
     fontWeight: "900!important",

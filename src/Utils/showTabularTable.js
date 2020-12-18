@@ -2,7 +2,7 @@ import React from "react";
 import TabularTable from "../Components/TabularTable";
 import { appendStep } from "../Components/Result";
 import varStore from "./varStore";
-export default function (minterms) {
+export default function (minterms, primes) {
   const createData = (group, decimal, binary) => {
     return { group, decimal, binary };
   };
@@ -18,5 +18,5 @@ export default function (minterms) {
       );
     }
   }
-  appendStep(<TabularTable index={varStore.currentStep++} rows={rows} />);
+  appendStep(<TabularTable index={varStore.currentStep++} rows={rows} primes={primes} />);
 }
