@@ -1,32 +1,72 @@
 {
-  "name": "Quine-McCluskey-Solver",
-  "version": "0.0.2477",
+  "name": "quine-mccluskey-solver",
+  "version": "1.0.0",
+  "author": "GeeekyBoy",
   "description": "Online Quine McCluskey Solver !",
   "keywords": [
     "react",
     "material"
   ],
+  "main": "public/electron.js",
   "homepage": "https://geeekyboy.github.io/Quine-McCluskey-Solver",
-  "main": "index.js",
   "dependencies": {
-    "@emotion/react": "11.1.2",
-    "@emotion/styled": "11.0.0",
-    "@material-ui/core": "5.0.0-alpha.18",
-    "@material-ui/icons": "5.0.0-alpha.19",
-    "fontsource-rubik": "3.1.6",
-    "history": "5.0.0",
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@material-ui/core": "next",
+    "@material-ui/icons": "next",
+    "electron-is-dev": "latest",
+    "fontsource-rubik": "latest",
+    "history": "latest",
     "react": "latest",
-    "react-dom": "17.0.1",
-    "react-reveal": "1.2.2",
-    "react-router-dom": "6.0.0-beta.0"
+    "react-dom": "latest",
+    "react-reveal": "latest",
+    "react-router-dom": "next"
   },
   "devDependencies": {
-    "react-scripts": "4.0.1"
+    "concurrently": "latest",
+    "cross-env": "latest",
+    "electron": "latest",
+    "electron-builder": "latest",
+    "react-scripts": "latest",
+    "wait-on": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js",
+    "preelectron-pack": "cross-env PUBLIC_URL=\"./\" react-scripts build"
+  },
+  "build": {
+    "appId": "com.geeekyboy.tabularsolver",
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/android-chrome-512x512.png"
+    },
+    "portable": {
+      "unicode": false,
+      "artifactName": "solver.exe"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
