@@ -1,4 +1,5 @@
 import replaceAt from "../Utils/replaceAt";
+import varStore from "../Utils/varStore";
 export default function (input) {
   const groupsCount = input.length;
   let result = [];
@@ -10,7 +11,7 @@ export default function (input) {
     const pairSecondElement = input[groupPairIndex + 1];
     for (const pairFirstElementItem of pairFirstElement) {
       let isUsed = false;
-      for (const diffPos of [...Array(4).keys()]) {
+      for (const diffPos of [...Array(varStore.initInputsNumber).keys()]) {
         const pattern = new RegExp(
           replaceAt(pairFirstElementItem[1], diffPos, ".")
         );

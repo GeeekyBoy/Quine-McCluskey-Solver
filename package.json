@@ -7,7 +7,7 @@
     "react",
     "material"
   ],
-  "main": "public/electron.js",
+  "main": "index.js",
   "homepage": "https://geeekyboy.github.io/Quine-McCluskey-Solver",
   "dependencies": {
     "@emotion/react": "latest",

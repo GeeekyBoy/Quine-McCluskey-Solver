@@ -4,11 +4,13 @@ import PrimeImplicants from "../Components/PrimeImplicants";
 import varStore from "../Utils/varStore";
 import { appendStep } from "../Components/Result";
 export default function () {
-  let { doNotCareNumbers, primes } = getPrimeImplicants();
+  let primes = getPrimeImplicants();
   let alphabiticalImplicants = [];
   for (const i of [...Array(primes.length).keys()]) {
     let cost = 0;
-    primes[i][0] = primes[i][0].filter((x) => !doNotCareNumbers.includes(x));
+    primes[i][0] = primes[i][0].filter(
+      (x) => !varStore.initInputLetters.includes(x)
+    );
     primes[i][1] = primes[i][1]
       .split("")
       .map((x, pos) => {

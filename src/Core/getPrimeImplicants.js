@@ -1,25 +1,21 @@
 import parseMinterms from "./parseMinterms";
 import getPrimeImplicantsCore from "./getPrimeImplicantsCore";
 import showTabularTable from "../Utils/showTabularTable";
-import cloneObject from "../Utils/cloneObject"
 export default function () {
   let primes = [];
-  let { minterms: input, doNotCareNumbers } = parseMinterms();
+  let minterms = parseMinterms();
   while (true) {
-    const stepResult = getPrimeImplicantsCore(input);
+    const stepResult = getPrimeImplicantsCore(minterms);
     primes = primes.concat(stepResult.primes);
     if (stepResult.result.length > 0) {
-      showTabularTable(input, stepResult.primes.flat());
-      input = stepResult.result;
+      showTabularTable(minterms, stepResult.primes.flat());
+      minterms = stepResult.result;
     } else {
-      showTabularTable(input, input.flat(2));
-        primes = primes.concat(input.flat());
+      showTabularTable(minterms, minterms.flat(2));
+      primes = primes.concat(minterms.flat());
       break;
     }
   }
   primes = Array.from(new Set(primes.map(JSON.stringify))).map(JSON.parse);
-  return {
-    doNotCareNumbers,
-    primes
-  };
+  return primes;
 }

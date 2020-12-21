@@ -18,8 +18,5 @@ export default function () {
     minterms[onesNumber].push([[mintermNumber], binaryRepresentation]);
   }
   minterms = minterms.filter((x) => x !== true);
-  return {
-    minterms,
-    doNotCareNumbers: varStore.initDonotCares
-  };
+  return minterms
 }
