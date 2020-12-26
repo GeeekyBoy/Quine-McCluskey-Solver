@@ -48,6 +48,13 @@ export default function (input) {
         primes.push(pairFirstElementItem);
       }
     }
+    if (groupPairIndex == groupsCount - 2) {
+      for (const pairSecondElementItem of pairSecondElement) {
+        if (!used.includes(pairSecondElementItem[1])) {
+          primes.push(pairSecondElementItem);
+        }
+      }
+    }
   }
   result = result.map((x) =>
     Array.from(new Set(x.map(JSON.stringify))).map(JSON.parse)
