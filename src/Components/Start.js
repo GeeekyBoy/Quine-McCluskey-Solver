@@ -44,6 +44,11 @@ export default function () {
       setDonotCaresErrMsg(null);
     }
   };
+  const handleInputsNumberChange = (event) => {
+    varStore.initInputsNumber = Number.isInteger(event.target.value)
+      ? event.target.value
+      : 0;
+  };
   const handleComplementAvailChange = (event) => {
     setIsComplementAvail(event.target.checked);
   };
@@ -97,6 +102,19 @@ export default function () {
               label="Don't Cares"
               onChange={handleDonotCaresChange}
               variant="outlined"
+            />
+          </div>
+          <div className={classes.startContainerItem}>
+            <TextField
+              id="filled-number"
+              label="Inputs Number"
+              type="number"
+              onChange={handleInputsNumberChange}
+              inputProps={{
+                min: 1
+              }}
+              variant="outlined"
+              helperText="Leave blank to be calcualted automatically"
             />
           </div>
           <div className={classes.startContainerItem}>

@@ -11,7 +11,7 @@ import Fade from "react-reveal/Fade";
 export default function () {
   const classes = useStyles();
   const navigate = useNavigate();
-  varStore.initInputsNumber =
+  const supposedInputsNumber =
     parseInt(
       Math.log2(
         Math.max(
@@ -20,6 +20,9 @@ export default function () {
       ),
       10
     ) + 1;
+  if (varStore.initInputsNumber < supposedInputsNumber) {
+    varStore.initInputsNumber = supposedInputsNumber
+  }
   const [isShown, setIsShown] = useState(true);
   const [isLettersChanged, setIsLettersChanged] = useState(false);
   const [letters, setLetters] = useState("");

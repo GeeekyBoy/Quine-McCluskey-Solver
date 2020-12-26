@@ -9,7 +9,7 @@ export default function () {
   for (const i of [...Array(primes.length).keys()]) {
     let cost = 0;
     primes[i][0] = primes[i][0].filter(
-      (x) => !varStore.initInputLetters.includes(x)
+      (x) => !varStore.initDonotCares.includes(x)
     );
     primes[i][1] = primes[i][1]
       .split("")
