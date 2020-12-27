@@ -1,7 +1,7 @@
 import React from "react";
 import Result from "../Components/Result";
 import Letters from "../Components/Letters";
-import noMinimization from "../Components/noMinimization"
+import noMinimization from "../Components/NoMinimization"
 import Start from "../Components/Start";
 const routes = [
   {
@@ -9,8 +9,8 @@ const routes = [
     element: <Start />
   },
   {
-    path: "/noMinimization",
-    element: <noMinimization />
+    path: "/NoMinimization",
+    element: <NoMinimization />
   },
   {
     path: "/letters",
