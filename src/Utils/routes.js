@@ -1,7 +1,7 @@
 import React from "react";
 import Result from "../Components/Result";
 import Letters from "../Components/Letters";
-import noMinimization from "../Components/NoMinimization"
+import NoMinimization from "../Components/NoMinimization"
 import Start from "../Components/Start";
 const routes = [
   {
