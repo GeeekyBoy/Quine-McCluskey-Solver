@@ -14,10 +14,12 @@ import Fade from "react-reveal/Fade";
 export default function () {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [earlyMinimization, setEarlyMinimization] = useState("");
   const [isShown, setIsShown] = useState(true);
   const [isMintermsChanged, setIsMintermsChanged] = useState(false);
   const [minterms, setMinterms] = useState("");
   const [donotCares, setDonotCares] = useState("");
+  const [enteredInputsNumber, setEnteredInputsNumber] = useState(0);
   const [mintermsErrMsg, setMintermsErrMsg] = useState(null);
   const [donotCaresErrMsg, setDonotCaresErrMsg] = useState(null);
   const [isComplementAvail, setIsComplementAvail] = useState(false);
@@ -45,9 +47,11 @@ export default function () {
     }
   };
   const handleInputsNumberChange = (event) => {
-    varStore.initInputsNumber = Number.isInteger(parseInt(event.target.value))
-      ? parseInt(event.target.value)
-      : 0;
+    setEnteredInputsNumber(
+      Number.isInteger(parseInt(event.target.value, 10))
+        ? parseInt(event.target.value, 10)
+        : 0
+    );
   };
   const handleComplementAvailChange = (event) => {
     setIsComplementAvail(event.target.checked);
@@ -65,9 +69,26 @@ export default function () {
           .match(new RegExp("[0-9]+", "g"))
           .map((x) => parseInt(x, 10));
       }
-      varStore.isComplementAvail = isComplementAvail;
-      setIsShown(false);
-      setTimeout(() => navigate("/letters"), 500);
+      const mintermsPlusDonotcares = varStore.initMinterms.concat(
+        varStore.initDonotCares
+      );
+      const supposedInputsNumber =
+        parseInt(
+          Math.log2(Math.max(...[...new Set(mintermsPlusDonotcares)])),
+          10
+        ) + 1;
+      varStore.initInputsNumber =
+        enteredInputsNumber < supposedInputsNumber
+          ? supposedInputsNumber
+          : enteredInputsNumber;
+      if (mintermsPlusDonotcares.length === 2 ** varStore.initInputsNumber) {
+        setEarlyMinimization("F = 1");
+        varStore.reset();
+      } else {
+        varStore.isComplementAvail = isComplementAvail;
+        setIsShown(false);
+        setTimeout(() => navigate("/letters"), 500);
+      }
     }
   };
   document.body.classList.add(useStyles().centeringRoot);
@@ -141,6 +162,13 @@ export default function () {
               >
                 Next
               </Button>
+            </center>
+          </div>
+          <div className={classes.startContainerItem}>
+            <center>
+              <Typography>
+                <b>{earlyMinimization}</b>
+              </Typography>
             </center>
           </div>
           <div className={classes.startContainerItem}>
