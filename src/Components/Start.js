@@ -14,7 +14,6 @@ import Fade from "react-reveal/Fade";
 export default function () {
   const classes = useStyles();
   const navigate = useNavigate();
-  const [earlyMinimization, setEarlyMinimization] = useState("");
   const [isShown, setIsShown] = useState(true);
   const [isMintermsChanged, setIsMintermsChanged] = useState(false);
   const [minterms, setMinterms] = useState("");
@@ -82,8 +81,8 @@ export default function () {
           ? supposedInputsNumber
           : enteredInputsNumber;
       if (mintermsPlusDonotcares.length === 2 ** varStore.initInputsNumber) {
-        setEarlyMinimization("F = 1");
-        varStore.reset();
+        setIsShown(false);
+        setTimeout(() => navigate("/noMinimization"), 500);
       } else {
         varStore.isComplementAvail = isComplementAvail;
         setIsShown(false);
@@ -162,13 +161,6 @@ export default function () {
               >
                 Next
               </Button>
-            </center>
-          </div>
-          <div className={classes.startContainerItem}>
-            <center>
-              <Typography>
-                <b>{earlyMinimization}</b>
-              </Typography>
             </center>
           </div>
           <div className={classes.startContainerItem}>

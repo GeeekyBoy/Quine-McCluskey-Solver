@@ -99,6 +99,9 @@ export default makeStyles((theme) => ({
     marginTop: "10px!important",
     border: "1px solid #00000080!important"
   },
+  noMinimizationCardMedia: {
+    height: 260
+  },
   logo: {
     fontWeight: "900!important",
     marginBottom: "10px!important"
