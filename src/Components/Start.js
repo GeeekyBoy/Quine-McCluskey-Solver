@@ -46,7 +46,7 @@ export default function () {
   };
   const handleInputsNumberChange = (event) => {
     varStore.initInputsNumber = Number.isInteger(parseInt(event.target.value))
-      ? event.target.value
+      ? parseInt(event.target.value)
       : 0;
   };
   const handleComplementAvailChange = (event) => {
