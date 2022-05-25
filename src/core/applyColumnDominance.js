@@ -1,7 +1,7 @@
 import React from "react";
-import SelectionTable from "../componentss/SelectionTable";
+import SelectionTable from "../components/SelectionTable";
 import colsParser from "../utils/colsParser";
-import { appendStep } from "../componentss/Result";
+import { appendStep } from "../components/Result";
 import varStore from "../utils/varStore";
 export default function (primes) {
   const colImplicants = [];

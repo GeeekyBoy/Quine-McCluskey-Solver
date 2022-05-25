@@ -1,6 +1,6 @@
 import React from "react";
-import TabularTable from "../componentss/TabularTable";
-import { appendStep } from "../componentss/Result";
+import TabularTable from "../components/TabularTable";
+import { appendStep } from "../components/Result";
 import varStore from "./varStore";
 export default function (minterms, primes) {
   const createData = (group, decimal, binary) => {
