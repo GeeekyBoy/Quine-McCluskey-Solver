@@ -1,12 +1,14 @@
+import { Fade } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import minimizeFunction from "../Core/minimizeFunction";
-import Fade from "react-reveal/Fade";
-import useStyles from "../styles";
+import minimizeFunction from "../core/minimizeFunction";
+import useClasses from "../hooks/useClasses";
+// import Fade from "react-reveal/Fade";
+import globalStyles from "../styles";
 export let appendStep = () => {};
 export let setIsResultShown = () => {};
 
 export default function () {
-  const classes = useStyles();
+  const classes = useClasses(globalStyles);
   const [isShown, setIsShown] = useState(true);
   const [children, setChildren] = useState([]);
   setIsResultShown = setIsShown;
@@ -21,14 +23,14 @@ export default function () {
       </div>
     ]);
   };
-  document.body.classList.remove(useStyles().centeringRoot);
-  document.getElementById("app").classList.remove(useStyles().ceneredContainer);
+  document.body.classList.remove(classes.centeringRoot);
+  document.getElementById("app").classList.remove(classes.ceneredContainer);
   useEffect(() => {
     minimizeFunction();
   }, []);
   return (
     <div className={classes.Masonry}>
-      <Fade duration={500} bottom cascade opposite appear when={isShown}>
+      <Fade timeout={500} in={isShown} appear={isShown}>
         <div>{children}</div>
       </Fade>
     </div>

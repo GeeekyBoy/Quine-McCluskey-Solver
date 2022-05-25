@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import useStyles from "../styles";
+import globalStyles from "../styles";
 import { useNavigate } from "react-router-dom";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import ArrowForwardRounded from "@material-ui/icons/ArrowForwardRounded";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import varStore from "../Utils/varStore";
-import Fade from "react-reveal/Fade";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import ArrowForwardRounded from "@mui/icons-material/ArrowForwardRounded";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import varStore from "../utils/varStore";
+import useClasses from "../hooks/useClasses";
+import { Fade } from "@mui/material";
+// import Fade from "react-reveal/Fade";
 export default function () {
-  const classes = useStyles();
+  const classes = useClasses(globalStyles);
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const [isMintermsChanged, setIsMintermsChanged] = useState(false);
@@ -90,10 +92,10 @@ export default function () {
       }
     }
   };
-  document.body.classList.add(useStyles().centeringRoot);
-  document.getElementById("app").classList.add(useStyles().ceneredContainer);
+  document.body.classList.add(classes.centeringRoot);
+  document.getElementById("app").classList.add(classes.ceneredContainer);
   return (
-    <Fade duration={500} opposite appear when={isShown}>
+    <Fade timeout={500} in={isShown} appear={isShown}>
       <Paper className={classes.startContainer}>
         <form noValidate autoComplete="off">
           <div className={classes.startContainerItem}>
@@ -101,7 +103,7 @@ export default function () {
               <Typography variant="h4" className={classes.logo}>
                 Quine McCluskey Solver !
               </Typography>
-              <Typography variant="h4">Enter Function Information</Typography>
+              <Typography variant="h5">Enter Function Information</Typography>
             </center>
           </div>
           <div className={classes.startContainerItem}>
@@ -111,7 +113,8 @@ export default function () {
               id="outlined-basic"
               label="Minterms"
               onChange={handleMintermsChange}
-              variant="outlined"
+              size="small"
+              variant="filled"
             />
           </div>
           <div className={classes.startContainerItem}>
@@ -121,7 +124,8 @@ export default function () {
               id="outlined-basic"
               label="Don't Cares"
               onChange={handleDonotCaresChange}
-              variant="outlined"
+              size="small"
+              variant="filled"
             />
           </div>
           <div className={classes.startContainerItem}>
@@ -133,7 +137,8 @@ export default function () {
               inputProps={{
                 min: 1
               }}
-              variant="outlined"
+              size="small"
+              variant="filled"
               helperText="Leave blank to be calcualted automatically"
             />
           </div>

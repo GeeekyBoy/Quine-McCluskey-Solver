@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import useStyles from "../styles";
+import globalStyles from "../styles";
 import { useNavigate } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import noMinimizationImg from "../Utils/noMinimizationImg";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import varStore from "../Utils/varStore";
-import Fade from "react-reveal/Fade";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import noMinimizationImg from "../utils/noMinimizationImg";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import varStore from "../utils/varStore";
+import useClasses from "../hooks/useClasses";
+import { Fade } from "@mui/material";
+// import Fade from "react-reveal/Fade";
 export default function () {
-  const classes = useStyles();
+  const classes = useClasses(globalStyles);
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const handleNewFunction = () => {
@@ -20,10 +22,10 @@ export default function () {
       navigate("/");
     }, 500);
   };
-  document.body.classList.add(useStyles().centeringRoot);
-  document.getElementById("app").classList.add(useStyles().ceneredContainer);
+  document.body.classList.add(classes.centeringRoot);
+  document.getElementById("app").classList.add(classes.ceneredContainer);
   return (
-    <Fade duration={500} opposite appear when={isShown}>
+    <Fade timeout={500} in={isShown} appear={isShown}>
       <Card className={classes.startContainer}>
         <CardMedia
           className={classes.noMinimizationCardMedia}

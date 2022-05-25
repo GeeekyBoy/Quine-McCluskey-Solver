@@ -1,16 +1,17 @@
 import React from "react";
-import useStyles from "../styles";
-import Table from "@material-ui/core/Table";
-import Toolbar from "@material-ui/core/Toolbar";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
+import globalStyles from "../styles";
+import Table from "@mui/material/Table";
+import Toolbar from "@mui/material/Toolbar";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import useClasses from "../hooks/useClasses";
 export default function (props) {
-  const classes = useStyles();
+  const classes = useClasses(globalStyles);
   let rows = props.rows;
   return (
     <TableContainer component={Paper} className={classes.table}>

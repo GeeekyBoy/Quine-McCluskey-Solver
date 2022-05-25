@@ -1,4 +1,4 @@
-import colsParser from "../Utils/colsParser";
+import colsParser from "../utils/colsParser";
 export default function (primes) {
   let primesPetrickMapping = {};
   let petrickPrimesMapping = {};

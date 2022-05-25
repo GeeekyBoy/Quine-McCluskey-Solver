@@ -1,23 +1,24 @@
 import React from "react";
-import useStyles from "../styles";
+import globalStyles from "../styles";
 import { useNavigate } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import numberToImage from "../Utils/numberToImg";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import Button from "@mui/material/Button";
+import numberToImage from "../utils/numberToImg";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import { setIsResultShown } from "./Result";
-import varStore from "../Utils/varStore";
+import varStore from "../utils/varStore";
+import useClasses from "../hooks/useClasses";
 export default function (props) {
-  const useAditionalStyles = makeStyles({
+  const styles = {
     root: {
-      background: `#FFDE03 url(${numberToImage(props.index.toString())})`
+      backgroundColor: "#FFDE03 !important",
+      background: `url(${numberToImage(props.index.toString())})`
     }
-  });
-  const classes = useStyles();
+  };
+  const classes = useClasses(globalStyles);
   const navigate = useNavigate();
-  const additionalClasses = useAditionalStyles();
+  const additionalClasses = useClasses(styles);
   const handleNewFunction = () => {
     setIsResultShown(false);
     setTimeout(() => {

@@ -1,8 +1,8 @@
 import React from "react";
 import getPrimeImplicants from "./getPrimeImplicants";
-import PrimeImplicants from "../Components/PrimeImplicants";
-import varStore from "../Utils/varStore";
-import { appendStep } from "../Components/Result";
+import PrimeImplicants from "../components/PrimeImplicants";
+import varStore from "../utils/varStore";
+import { appendStep } from "../components/Result";
 export default function () {
   let primes = getPrimeImplicants();
   let alphabiticalImplicants = [];

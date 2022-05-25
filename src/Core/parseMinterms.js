@@ -1,4 +1,4 @@
-import varStore from "../Utils/varStore";
+import varStore from "../utils/varStore";
 export default function () {
   const mintermsNumbers = [
     ...new Set(varStore.initMinterms.concat(varStore.initDonotCares))

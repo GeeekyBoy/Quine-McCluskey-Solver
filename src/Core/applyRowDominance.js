@@ -1,8 +1,8 @@
 import React from "react";
-import colsParser from "../Utils/colsParser";
-import SelectionTable from "../Components/SelectionTable";
-import { appendStep } from "../Components/Result";
-import varStore from "../Utils/varStore";
+import colsParser from "../utils/colsParser";
+import SelectionTable from "../components/SelectionTable";
+import { appendStep } from "../components/Result";
+import varStore from "../utils/varStore";
 export default function (primes) {
   const rows = [];
   const dominatedRowsIndecies = [];

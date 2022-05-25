@@ -1,16 +1,17 @@
 import React from "react";
-import useStyles from "../styles";
-import Table from "@material-ui/core/Table";
-import Typography from "@material-ui/core/Typography";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Toolbar from "@material-ui/core/Toolbar";
+import globalStyles from "../styles";
+import Table from "@mui/material/Table";
+import Typography from "@mui/material/Typography";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Toolbar from "@mui/material/Toolbar";
+import useClasses from "../hooks/useClasses";
 export default function (props) {
-  const classes = useStyles();
+  const classes = useClasses(globalStyles);
   const title = () => {
     if (props.extractSingles) {
       return "Finding Unique Minterms";

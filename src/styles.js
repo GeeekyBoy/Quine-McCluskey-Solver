@@ -1,6 +1,5 @@
-import { makeStyles } from "@material-ui/core/styles";
-import BG from "./Utils/background";
-export default makeStyles((theme) => ({
+import BG from "./utils/background";
+export default {
   root: {
     backgroundImage: `url(${BG})`,
     backgroundRepeat: "no-repeat",
@@ -22,13 +21,18 @@ export default makeStyles((theme) => ({
     maxWidth: 600
   },
   startContainer: {
-    minWidth: "100%"
+    minWidth: "100%",
+    paddingTop: 5,
+    paddingBottom: 5,
   },
   startContainerItem: {
     "& .MuiTextField-root": {
       width: "100%"
     },
-    padding: 15
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   mansory: {
     margin: "0 auto"
@@ -106,4 +110,4 @@ export default makeStyles((theme) => ({
     fontWeight: "900!important",
     marginBottom: "10px!important"
   }
-}));
+};

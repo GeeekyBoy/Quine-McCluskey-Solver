@@ -10,25 +10,25 @@
   "main": "index.js",
   "homepage": "https://geeekyboy.github.io/Quine-McCluskey-Solver",
   "dependencies": {
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
-    "@material-ui/core": "next",
-    "@material-ui/icons": "next",
-    "electron-is-dev": "latest",
-    "fontsource-rubik": "latest",
-    "history": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-reveal": "latest",
-    "react-router-dom": "next"
+    "@emotion/react": "11.9.0",
+    "@emotion/styled": "11.8.1",
+    "@emotion/css": "11.9.0",
+    "@mui/material": "5.8.1",
+    "@mui/icons-material": "5.8.0",
+    "electron-is-dev": "2.0.0",
+    "fontsource-rubik": "4.0.0",
+    "history": "5.3.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-router-dom": "6.3.0"
   },
   "devDependencies": {
-    "concurrently": "latest",
-    "cross-env": "latest",
-    "electron": "latest",
-    "electron-builder": "latest",
-    "react-scripts": "latest",
-    "wait-on": "latest"
+    "concurrently": "7.2.1",
+    "cross-env": "7.0.3",
+    "electron": "19.0.0",
+    "electron-builder": "23.0.3",
+    "react-scripts": "5.0.1",
+    "wait-on": "6.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

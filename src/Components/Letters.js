@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import useStyles from "../styles";
-import Paper from "@material-ui/core/Paper";
+import globalStyles from "../styles";
+import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import CalculateRounded from "@material-ui/icons/CalculateRounded";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import varStore from "../Utils/varStore";
-import Fade from "react-reveal/Fade";
+import Button from "@mui/material/Button";
+import CalculateRounded from "@mui/icons-material/CalculateRounded";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import varStore from "../utils/varStore";
+import useClasses from "../hooks/useClasses";
+import { Fade } from "@mui/material";
+// import Fade from "react-reveal/Fade";
 export default function () {
-  const classes = useStyles();
+  const classes = useClasses(globalStyles);
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const [isLettersChanged, setIsLettersChanged] = useState(false);
@@ -44,10 +46,10 @@ export default function () {
       setTimeout(() => navigate("/result"), 500);
     }
   };
-  document.body.classList.add(useStyles().centeringRoot);
-  document.getElementById("app").classList.add(useStyles().ceneredContainer);
+  document.body.classList.add(classes.centeringRoot);
+  document.getElementById("app").classList.add(classes.ceneredContainer);
   return (
-    <Fade duration={500} opposite appear when={isShown}>
+    <Fade timeout={500} in={isShown} appear={isShown}>
       <Paper className={classes.startContainer}>
         <form noValidate autoComplete="off">
           <div className={classes.startContainerItem}>
@@ -62,7 +64,8 @@ export default function () {
               id="outlined-basic"
               label={`Enter ${varStore.initInputsNumber} Letters`}
               onChange={handleChange}
-              variant="outlined"
+              size="small"
+              variant="filled"
             />
           </div>
           <div className={classes.startContainerItem}>

@@ -1,8 +1,8 @@
 import React from "react";
-import Result from "../Components/Result";
-import Letters from "../Components/Letters";
-import NoMinimization from "../Components/NoMinimization"
-import Start from "../Components/Start";
+import Result from "../components/Result";
+import Letters from "../components/Letters";
+import NoMinimization from "../components/NoMinimization"
+import Start from "../components/Start";
 const routes = [
   {
     path: "/",
