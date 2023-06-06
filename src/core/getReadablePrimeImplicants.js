@@ -3,6 +3,7 @@ import getPrimeImplicants from "./getPrimeImplicants";
 import PrimeImplicants from "../components/PrimeImplicants";
 import varStore from "../utils/varStore";
 import { appendStep } from "../components/Result";
+
 export default function () {
   let primes = getPrimeImplicants();
   let alphabiticalImplicants = [];

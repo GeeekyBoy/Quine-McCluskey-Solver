@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import useClasses from "../hooks/useClasses";
+
 export default function (props) {
   const classes = useClasses(globalStyles);
   let rows = props.rows;

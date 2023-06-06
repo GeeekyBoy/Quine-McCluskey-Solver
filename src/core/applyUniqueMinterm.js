@@ -3,6 +3,7 @@ import SelectionTable from "../components/SelectionTable";
 import colsParser from "../utils/colsParser";
 import { appendStep } from "../components/Result";
 import varStore from "../utils/varStore";
+
 export default function (primes) {
   const essentials = [];
   const tableData = [[], [], []];

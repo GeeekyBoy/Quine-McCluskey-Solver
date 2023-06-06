@@ -3,6 +3,7 @@ import globalStyles from "../styles";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+
 export default function (props) {
   const classes = useClasses(globalStyles);
   const stringifiedSteps = props.stepsData

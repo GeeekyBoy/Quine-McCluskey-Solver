@@ -2,7 +2,6 @@ import { Fade } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import minimizeFunction from "../core/minimizeFunction";
 import useClasses from "../hooks/useClasses";
-// import Fade from "react-reveal/Fade";
 import globalStyles from "../styles";
 export let appendStep = () => {};
 export let setIsResultShown = () => {};

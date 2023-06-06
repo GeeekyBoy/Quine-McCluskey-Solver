@@ -13,6 +13,7 @@ import colsParser from "../utils/colsParser";
 import cloneObject from "../utils/cloneObject";
 import varStore from "../utils/varStore";
 import { appendStep } from "../components/Result";
+
 export default function () {
   let essentials = [];
   let prevPrimes;

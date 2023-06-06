@@ -9,6 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import { setIsResultShown } from "./Result";
 import varStore from "../utils/varStore";
 import useClasses from "../hooks/useClasses";
+
 export default function (props) {
   const styles = {
     root: {

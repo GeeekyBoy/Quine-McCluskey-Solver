@@ -7,6 +7,7 @@ import { HashRouter, useRoutes } from "react-router-dom";
 import routes from "./utils/routes";
 import useClasses from "./hooks/useClasses";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 const theme = createTheme({
   palette: {
     primary: {

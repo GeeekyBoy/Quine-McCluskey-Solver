@@ -1,4 +1,5 @@
 import BG from "./utils/background";
+
 export default {
   root: {
     backgroundImage: `url(${BG})`,

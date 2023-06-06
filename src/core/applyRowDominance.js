@@ -3,6 +3,7 @@ import colsParser from "../utils/colsParser";
 import SelectionTable from "../components/SelectionTable";
 import { appendStep } from "../components/Result";
 import varStore from "../utils/varStore";
+
 export default function (primes) {
   const rows = [];
   const dominatedRowsIndecies = [];

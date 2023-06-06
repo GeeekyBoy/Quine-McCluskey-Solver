@@ -1,6 +1,7 @@
 import parseMinterms from "./parseMinterms";
 import getPrimeImplicantsCore from "./getPrimeImplicantsCore";
 import showTabularTable from "../utils/showTabularTable";
+
 export default function () {
   let primes = [];
   let minterms = parseMinterms();

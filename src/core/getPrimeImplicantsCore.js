@@ -1,5 +1,6 @@
 import replaceAt from "../utils/replaceAt";
 import varStore from "../utils/varStore";
+
 export default function (input) {
   const groupsCount = input.length;
   let result = [];

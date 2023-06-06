@@ -3,6 +3,7 @@ import Result from "../components/Result";
 import Letters from "../components/Letters";
 import NoMinimization from "../components/NoMinimization"
 import Start from "../components/Start";
+
 const routes = [
   {
     path: "/",
@@ -21,4 +22,5 @@ const routes = [
     element: <Result />
   }
 ];
+
 export default routes;

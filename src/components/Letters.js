@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
 import useClasses from "../hooks/useClasses";
 import { Fade } from "@mui/material";
-// import Fade from "react-reveal/Fade";
+
 export default function () {
   const classes = useClasses(globalStyles);
   const navigate = useNavigate();
