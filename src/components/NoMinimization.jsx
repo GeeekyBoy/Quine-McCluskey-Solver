@@ -3,7 +3,7 @@ import globalStyles from "../styles";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import noMinimizationImg from "../utils/noMinimizationImg";
+import noMinimizationImg from "../assets/img/no-minimization.gif";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
