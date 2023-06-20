@@ -10,16 +10,16 @@ export default {
     overflowX: "hidden"
   }),
   centeringRoot: css({
-    width: "100%",
     display: "flex",
-    height: "100vh",
+    minHeight: "100vh",
     margin: 0,
+    paddingLeft: 15,
+    paddingRight: 15,
     justifyContent: "center",
-    overflow: "hidden"
   }),
   ceneredContainer: css({
     alignSelf: "center",
-    width: "80%",
+    width: "100%",
     maxWidth: 600
   }),
   startContainer: css({
