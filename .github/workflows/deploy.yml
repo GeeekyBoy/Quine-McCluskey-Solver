@@ -8,6 +8,11 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  VITE_CANONICAL_URL: ${{ secrets.CANONICAL_URL }}
+  VITE_GOOGLE_VERIFICATION: ${{ secrets.GOOGLE_VERIFICATION }}
+  VITE_GTAG: ${{ secrets.GTAG }}
+
 jobs:
   deploy:
     environment:
