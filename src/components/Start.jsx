@@ -168,8 +168,21 @@ export default function () {
           </div>
           <div className={globalStyles.startContainerItem}>
             <center>
-              <Typography>
-                Made With <span style={{ color: "#FF0000" }}>❤</span> In Egypt
+              <a href="https://github.com/GeeekyBoy/Quine-McCluskey-Solver" target="_blank">
+                <img
+                  alt="GitHub stars"
+                  src="https://img.shields.io/github/stars/GeeekyBoy/Quine-McCluskey-Solver?style=social&amp;label=Star"
+                  width={76}
+                  height={20}
+                />
+              </a>
+              <Typography variant="body2">
+                Made With <span style={{ color: "#FF0000" }}>❤</span> by{" "}
+                <a href="https://github.com/GeeekyBoy" target="_blank" style={{ color: "inherit" }}>GeeekyBoy</a>{" "}
+                In Egypt
+              </Typography>
+              <Typography variant="body2">
+                Copyright © 2023 GeeekyBoy
               </Typography>
             </center>
           </div>
