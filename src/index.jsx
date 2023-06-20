@@ -34,7 +34,6 @@ const theme = createTheme({
   }
 });
 function App() {
-  const classes = globalStyles;
   const navigate = useNavigate();
   const routeResult = useRoutes(routes);
   const [isFirstLaunch, setIsFirstLaunch] = useState(true);
@@ -48,13 +47,13 @@ function App() {
   return isFirstLaunch ? null : routeResult;
 }
 
-const container = document.getElementById('app');
+const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
   <HashRouter>
-      <ThemeProvider theme={theme}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
     </ThemeProvider>
   </HashRouter>
 );

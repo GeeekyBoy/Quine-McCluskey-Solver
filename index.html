@@ -2,31 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <!-- <meta http-equiv="refresh" content="0; url=https://quinemccluskey.geeekyboy.com/" /> -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="A free open-source web application aiming to provide an easy-to-use
     step-by-step minimizer for any single boolean function.">
-    <meta name="google-site-verification" content="IVkV_o1TDOH-qVqLluhAzn_On8_y3c1RyzyWHDWe1Zg" />
-    <!--
-    manifest.json provides metadata used when your web app is added to the
-    homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-  -->
+    <meta name="google-site-verification" content="%VITE_GOOGLE_VERIFICATION%" />
     <link rel="canonical" href="https://quinemccluskey.geeekyboy.com/" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <!--
-    Notice the use of %PUBLIC_URL% in the tags above.
-    It will be replaced with the URL of the `public` folder during the build.
-    Only files inside the `public` folder can be referenced from the HTML.
-
-    Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-    work correctly both with client-side routing and a non-root public URL.
-    Learn how to configure a non-root public URL by running `npm run build`.
-  -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <title>Quine McCluskey Solver</title>
     <style>
       /* custom scrollbar */
@@ -174,23 +157,15 @@
         <div class="sk-cube sk-cube9"></div>
       </div>
     </div>
-    <div id="app"></div>
-    <!--
-    This HTML file is a template.
-    If you open it directly in the browser, you will see an empty page.
-
-    You can add webfonts, meta tags, or analytics to this file.
-    The build step will place the bundled scripts into the <body> tag.
-
-    To begin the development, run `npm start` or `yarn start`.
-    To create a production bundle, use `npm run build` or `yarn build`.
-  --></body>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1DCRE7TVEY"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-1DCRE7TVEY');
-  </script>
+    <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GTAG%"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '%VITE_GTAG%');
+    </script>
+  </body>
 </html>

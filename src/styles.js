@@ -1,9 +1,9 @@
+import bg from "./assets/img/bg.jpg";
 import { css } from '@emotion/css';
-import BG from "./utils/background";
 
 export default {
   root: css({
-    backgroundImage: `url(${BG})`,
+    backgroundImage: `url(${bg})`,
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
     backgroundSize: "cover",

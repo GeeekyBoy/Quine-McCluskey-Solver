@@ -91,7 +91,7 @@ export default function () {
     }
   };
   document.body.classList.add(globalStyles.centeringRoot);
-  document.getElementById("app").classList.add(globalStyles.ceneredContainer);
+  document.getElementById("root").classList.add(globalStyles.ceneredContainer);
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
       <Paper className={globalStyles.startContainer}>
@@ -107,7 +107,7 @@ export default function () {
           <div className={globalStyles.startContainerItem}>
             <TextField
               helperText={mintermsErrMsg ? mintermsErrMsg : null}
-              error={mintermsErrMsg}
+              error={!!mintermsErrMsg}
               id="outlined-basic"
               label="Minterms"
               onChange={handleMintermsChange}
@@ -118,7 +118,7 @@ export default function () {
           <div className={globalStyles.startContainerItem}>
             <TextField
               helperText={donotCaresErrMsg ? donotCaresErrMsg : null}
-              error={donotCaresErrMsg}
+              error={!!donotCaresErrMsg}
               id="outlined-basic"
               label="Don't Cares"
               onChange={handleDonotCaresChange}

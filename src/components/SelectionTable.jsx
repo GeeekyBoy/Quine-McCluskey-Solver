@@ -31,26 +31,26 @@ export default function (props) {
         <TableHead>
           <TableRow>
             <TableCell align="center">Minterms</TableCell>
-            {props.availCols.map((availCol) => {
+            {props.availCols.map((availCol, i) => {
               if (
                 (props.extractSingles &&
                   props.stepsData[1].includes(availCol)) ||
                 (props.columnDominance && props.stepsData.includes(availCol))
               ) {
                 return (
-                  <TableCell align="center" className={globalStyles.cancelled}>
+                  <TableCell key={i} align="center" className={globalStyles.cancelled}>
                     {availCol}
                   </TableCell>
                 );
               } else {
-                return <TableCell align="center">{availCol}</TableCell>;
+                return <TableCell key={i} align="center">{availCol}</TableCell>;
               }
             })}
             <TableCell align="center">Cost</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.primeImplicants.map((primeImplicant) => (
+          {props.primeImplicants.map((primeImplicant, i) => (
             <TableRow key={primeImplicant[1]}>
               {(() => {
                 if (
@@ -60,21 +60,22 @@ export default function (props) {
                     props.stepsData.includes(primeImplicant[1]))
                 ) {
                   return (
-                    <TableCell align="center" className={globalStyles.cancelled}>
+                    <TableCell key={i} align="center" className={globalStyles.cancelled}>
                       {primeImplicant[1]}
                     </TableCell>
                   );
                 } else {
                   return (
-                    <TableCell align="center">{primeImplicant[1]}</TableCell>
+                    <TableCell key={i} align="center">{primeImplicant[1]}</TableCell>
                   );
                 }
               })()}
-              {props.availCols.map((availCol) => {
+              {props.availCols.map((availCol, i) => {
                 if (props.extractSingles) {
                   if (props.stepsData[1].includes(availCol)) {
                     return (
                       <TableCell
+                        key={i}
                         align="center"
                         className={`${globalStyles.cancelled} ${
                           primeImplicant[0].includes(availCol)
@@ -98,6 +99,7 @@ export default function (props) {
                   ) {
                     return (
                       <TableCell
+                        key={i}
                         align="center"
                         className={`${globalStyles.cancelled} ${globalStyles.dashedBorder} ${globalStyles.redBorder}`}
                       >
@@ -107,6 +109,7 @@ export default function (props) {
                   } else {
                     return (
                       <TableCell
+                        key={i}
                         align="center"
                         className={
                           props.stepsData[2].includes(primeImplicant[1])
@@ -124,19 +127,19 @@ export default function (props) {
                   (props.columnDominance && props.stepsData.includes(availCol))
                 ) {
                   return (
-                    <TableCell align="center" className={globalStyles.cancelled}>
+                    <TableCell key={i} align="center" className={globalStyles.cancelled}>
                       {primeImplicant[0].includes(availCol) ? "X" : ""}
                     </TableCell>
                   );
                 } else {
                   return (
-                    <TableCell align="center">
+                    <TableCell key={i} align="center">
                       {primeImplicant[0].includes(availCol) ? "X" : ""}
                     </TableCell>
                   );
                 }
               })}
-              <TableCell align="center">{primeImplicant[2]}</TableCell>
+              <TableCell key={`${i}-1`} align="center">{primeImplicant[2]}</TableCell>
             </TableRow>
           ))}
         </TableBody>

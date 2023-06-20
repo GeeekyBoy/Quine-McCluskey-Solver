@@ -21,7 +21,7 @@ export default function () {
     ]);
   };
   document.body.classList.remove(globalStyles.centeringRoot);
-  document.getElementById("app").classList.remove(globalStyles.ceneredContainer);
+  document.getElementById("root").classList.remove(globalStyles.ceneredContainer);
   useEffect(() => {
     minimizeFunction();
   }, []);

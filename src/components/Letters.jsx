@@ -45,7 +45,7 @@ export default function () {
     }
   };
   document.body.classList.add(globalStyles.centeringRoot);
-  document.getElementById("app").classList.add(globalStyles.ceneredContainer);
+  document.getElementById("root").classList.add(globalStyles.ceneredContainer);
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
       <Paper className={globalStyles.startContainer}>
@@ -58,7 +58,7 @@ export default function () {
           <div className={globalStyles.startContainerItem}>
             <TextField
               helperText={errMsg ? errMsg : null}
-              error={errMsg}
+              error={!!errMsg}
               id="outlined-basic"
               label={`Enter ${varStore.initInputsNumber} Letters`}
               onChange={handleChange}

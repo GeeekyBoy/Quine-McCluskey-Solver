@@ -20,11 +20,10 @@ export default function (props) {
         <Typography variant="h4">
           <b>Possible Function Minimizations</b>
         </Typography>
-        {props.minimizations.map((minimization) => (
-          <Typography
-            variant="h4"
-            style={{ margin: 10 }}
-          >{`F = ${minimization.join(" + ")}`}</Typography>
+        {props.minimizations.map((minimization, i) => (
+          <Typography key={i} variant="h4" style={{ margin: 10 }}>
+            {`F = ${minimization.join(" + ")}`}
+          </Typography>
         ))}
       </CardContent>
     </Card>

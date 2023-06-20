@@ -21,7 +21,7 @@ export default function () {
     }, 500);
   };
   document.body.classList.add(globalStyles.centeringRoot);
-  document.getElementById("app").classList.add(globalStyles.ceneredContainer);
+  document.getElementById("root").classList.add(globalStyles.ceneredContainer);
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
       <Card className={globalStyles.startContainer}>

@@ -22,13 +22,14 @@
     "react-router-dom": "6.13.0"
   },
   "devDependencies": {
-    "react-scripts": "5.0.1"
+    "vite": "4.3.9",
+    "@vitejs/plugin-react": "4.0.1",
+    "vite-plugin-svgr": "3.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "browserslist": {
     "production": [
