@@ -5,12 +5,11 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
 export default function (props) {
-  const classes = useClasses(globalStyles);
   const stringifiedSteps = props.stepsData
     .map((step) => step.map((bracket) => `(${bracket.join(" + ")})`).join(""))
     .join(" = ");
   return (
-    <Card className={classes.petrickCard}>
+    <Card className={globalStyles.petrickCard}>
       <CardContent align="center">
         <Typography variant="h4">
           <b>{`${props.index}. Applying Petrick Method`}</b>

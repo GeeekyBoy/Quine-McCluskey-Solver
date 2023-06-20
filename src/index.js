@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import globalStyles from "./styles";
 import { HashRouter, useRoutes } from "react-router-dom";
 import routes from "./utils/routes";
-import useClasses from "./hooks/useClasses";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -35,7 +34,7 @@ const theme = createTheme({
   }
 });
 function App() {
-  const classes = useClasses(globalStyles);
+  const classes = globalStyles;
   const navigate = useNavigate();
   const routeResult = useRoutes(routes);
   const [isFirstLaunch, setIsFirstLaunch] = useState(true);
@@ -44,7 +43,7 @@ function App() {
     navigate("/");
     document.body.classList.remove("loadingBody");
     document.getElementById("splash").remove();
-    document.body.classList.add(classes.root);
+    document.body.classList.add(globalStyles.root);
   }, []);
   return isFirstLaunch ? null : routeResult;
 }

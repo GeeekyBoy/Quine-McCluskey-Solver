@@ -8,11 +8,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
-import useClasses from "../hooks/useClasses";
 import { Fade } from "@mui/material";
 
 export default function () {
-  const classes = useClasses(globalStyles);
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const handleNewFunction = () => {
@@ -22,13 +20,13 @@ export default function () {
       navigate("/");
     }, 500);
   };
-  document.body.classList.add(classes.centeringRoot);
-  document.getElementById("app").classList.add(classes.ceneredContainer);
+  document.body.classList.add(globalStyles.centeringRoot);
+  document.getElementById("app").classList.add(globalStyles.ceneredContainer);
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
-      <Card className={classes.startContainer}>
+      <Card className={globalStyles.startContainer}>
         <CardMedia
-          className={classes.noMinimizationCardMedia}
+          className={globalStyles.noMinimizationCardMedia}
           image={noMinimizationImg}
           title="Contemplative Reptile"
         />
@@ -45,7 +43,7 @@ export default function () {
           </Typography>
           <Button
             variant="outlined"
-            className={classes.newFunctionBtn}
+            className={globalStyles.newFunctionBtn}
             onClick={handleNewFunction}
           >
             <Typography>New Function</Typography>

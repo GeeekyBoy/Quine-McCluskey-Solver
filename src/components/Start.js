@@ -10,11 +10,9 @@ import ArrowForwardRounded from "@mui/icons-material/ArrowForwardRounded";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
-import useClasses from "../hooks/useClasses";
 import { Fade } from "@mui/material";
 
 export default function () {
-  const classes = useClasses(globalStyles);
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const [isMintermsChanged, setIsMintermsChanged] = useState(false);
@@ -92,21 +90,21 @@ export default function () {
       }
     }
   };
-  document.body.classList.add(classes.centeringRoot);
-  document.getElementById("app").classList.add(classes.ceneredContainer);
+  document.body.classList.add(globalStyles.centeringRoot);
+  document.getElementById("app").classList.add(globalStyles.ceneredContainer);
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
-      <Paper className={classes.startContainer}>
+      <Paper className={globalStyles.startContainer}>
         <form noValidate autoComplete="off">
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <center>
-              <Typography variant="h4" className={classes.logo}>
+              <Typography variant="h4" className={globalStyles.logo}>
                 Quine McCluskey Solver !
               </Typography>
               <Typography variant="h5">Enter Function Information</Typography>
             </center>
           </div>
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <TextField
               helperText={mintermsErrMsg ? mintermsErrMsg : null}
               error={mintermsErrMsg}
@@ -117,7 +115,7 @@ export default function () {
               variant="filled"
             />
           </div>
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <TextField
               helperText={donotCaresErrMsg ? donotCaresErrMsg : null}
               error={donotCaresErrMsg}
@@ -128,7 +126,7 @@ export default function () {
               variant="filled"
             />
           </div>
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <TextField
               id="filled-number"
               label="Inputs Number"
@@ -142,7 +140,7 @@ export default function () {
               helperText="Leave blank to be calcualted automatically"
             />
           </div>
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <FormGroup row>
               <FormControlLabel
                 control={
@@ -156,7 +154,7 @@ export default function () {
               />
             </FormGroup>
           </div>
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <center>
               <Button
                 endIcon={<ArrowForwardRounded />}
@@ -168,7 +166,7 @@ export default function () {
               </Button>
             </center>
           </div>
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <center>
               <Typography>
                 Made With <span style={{ color: "#FF0000" }}>❤</span> In Egypt

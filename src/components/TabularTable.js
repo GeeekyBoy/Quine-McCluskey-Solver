@@ -9,13 +9,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import useClasses from "../hooks/useClasses";
 
 export default function (props) {
-  const classes = useClasses(globalStyles);
   let rows = props.rows;
   return (
-    <TableContainer component={Paper} className={classes.table}>
+    <TableContainer component={Paper} className={globalStyles.table}>
       <Toolbar>
         <Typography>{`${props.index}. Finding Prime Implicants`}</Typography>
       </Toolbar>

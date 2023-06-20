@@ -4,20 +4,18 @@ import numberToImage from "../utils/numberToImg";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import useClasses from "../hooks/useClasses";
+import { css } from '@emotion/css';
 
 export default function (props) {
   const styles = {
-    root: {
+    root: css({
       backgroundColor: "#3DDB85 !important",
       background: `url(${numberToImage(props.index.toString())})`,
       color: "#FFFFFF !important"
-    }
+    })
   };
-  const classes = useClasses(globalStyles);
-  const additionalClasses = useClasses(styles);
   return (
-    <Card className={`${classes.numberedBG} ${additionalClasses.root}`}>
+    <Card className={`${globalStyles.numberedBG} ${styles.root}`}>
       <CardContent align="center">
         <Typography variant="h4">
           <b>Possible Function Minimizations</b>

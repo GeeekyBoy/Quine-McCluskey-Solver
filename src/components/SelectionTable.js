@@ -9,10 +9,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Toolbar from "@mui/material/Toolbar";
-import useClasses from "../hooks/useClasses";
 
 export default function (props) {
-  const classes = useClasses(globalStyles);
   const title = () => {
     if (props.extractSingles) {
       return "Finding Unique Minterms";
@@ -25,7 +23,7 @@ export default function (props) {
     }
   };
   return (
-    <TableContainer component={Paper} className={classes.table}>
+    <TableContainer component={Paper} className={globalStyles.table}>
       <Toolbar>
         <Typography>{`${props.index}. ${title()}`}</Typography>
       </Toolbar>
@@ -40,7 +38,7 @@ export default function (props) {
                 (props.columnDominance && props.stepsData.includes(availCol))
               ) {
                 return (
-                  <TableCell align="center" className={classes.cancelled}>
+                  <TableCell align="center" className={globalStyles.cancelled}>
                     {availCol}
                   </TableCell>
                 );
@@ -62,7 +60,7 @@ export default function (props) {
                     props.stepsData.includes(primeImplicant[1]))
                 ) {
                   return (
-                    <TableCell align="center" className={classes.cancelled}>
+                    <TableCell align="center" className={globalStyles.cancelled}>
                       {primeImplicant[1]}
                     </TableCell>
                   );
@@ -78,15 +76,15 @@ export default function (props) {
                     return (
                       <TableCell
                         align="center"
-                        className={`${classes.cancelled} ${
+                        className={`${globalStyles.cancelled} ${
                           primeImplicant[0].includes(availCol)
-                            ? classes.dashedBorder
+                            ? globalStyles.dashedBorder
                             : null
                         }
 												${
                           primeImplicant[0].includes(availCol) &&
                           props.stepsData[2].includes(primeImplicant[1])
-                            ? classes.redBorder
+                            ? globalStyles.redBorder
                             : null
                         }`}
                       >
@@ -101,9 +99,9 @@ export default function (props) {
                     return (
                       <TableCell
                         align="center"
-                        className={`${classes.cancelled} ${classes.dashedBorder} ${classes.redBorder}`}
+                        className={`${globalStyles.cancelled} ${globalStyles.dashedBorder} ${globalStyles.redBorder}`}
                       >
-                        <Typography className={classes.single}>X</Typography>
+                        <Typography className={globalStyles.single}>X</Typography>
                       </TableCell>
                     );
                   } else {
@@ -112,7 +110,7 @@ export default function (props) {
                         align="center"
                         className={
                           props.stepsData[2].includes(primeImplicant[1])
-                            ? classes.cancelled
+                            ? globalStyles.cancelled
                             : null
                         }
                       >
@@ -126,7 +124,7 @@ export default function (props) {
                   (props.columnDominance && props.stepsData.includes(availCol))
                 ) {
                   return (
-                    <TableCell align="center" className={classes.cancelled}>
+                    <TableCell align="center" className={globalStyles.cancelled}>
                       {primeImplicant[0].includes(availCol) ? "X" : ""}
                     </TableCell>
                   );

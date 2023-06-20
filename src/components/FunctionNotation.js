@@ -8,18 +8,16 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { setIsResultShown } from "./Result";
 import varStore from "../utils/varStore";
-import useClasses from "../hooks/useClasses";
+import { css } from '@emotion/css';
 
 export default function (props) {
   const styles = {
-    root: {
+    root: css({
       backgroundColor: "#FFDE03 !important",
       background: `url(${numberToImage(props.index.toString())})`
-    }
+    })
   };
-  const classes = useClasses(globalStyles);
   const navigate = useNavigate();
-  const additionalClasses = useClasses(styles);
   const handleNewFunction = () => {
     setIsResultShown(false);
     setTimeout(() => {
@@ -28,7 +26,7 @@ export default function (props) {
     }, 500);
   };
   return (
-    <Card className={`${classes.numberedBG} ${additionalClasses.root}`}>
+    <Card className={`${globalStyles.numberedBG} ${styles.root}`}>
       <CardContent align="center">
         <Typography variant="h4">
           <b>{`F(${varStore.initInputLetters.join(
@@ -39,7 +37,7 @@ export default function (props) {
               : ""
           }`}</b>
         </Typography>
-        <Button variant="outlined" className={classes.newFunctionBtn} onClick={handleNewFunction}>
+        <Button variant="outlined" className={globalStyles.newFunctionBtn} onClick={handleNewFunction}>
           <Typography>New Function</Typography>
         </Button>
       </CardContent>

@@ -7,11 +7,9 @@ import CalculateRounded from "@mui/icons-material/CalculateRounded";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
-import useClasses from "../hooks/useClasses";
 import { Fade } from "@mui/material";
 
 export default function () {
-  const classes = useClasses(globalStyles);
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const [isLettersChanged, setIsLettersChanged] = useState(false);
@@ -46,18 +44,18 @@ export default function () {
       setTimeout(() => navigate("/result"), 500);
     }
   };
-  document.body.classList.add(classes.centeringRoot);
-  document.getElementById("app").classList.add(classes.ceneredContainer);
+  document.body.classList.add(globalStyles.centeringRoot);
+  document.getElementById("app").classList.add(globalStyles.ceneredContainer);
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
-      <Paper className={classes.startContainer}>
+      <Paper className={globalStyles.startContainer}>
         <form noValidate autoComplete="off">
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <center>
               <Typography variant="h4">Name The Inputs</Typography>
             </center>
           </div>
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <TextField
               helperText={errMsg ? errMsg : null}
               error={errMsg}
@@ -68,7 +66,7 @@ export default function () {
               variant="filled"
             />
           </div>
-          <div className={classes.startContainerItem}>
+          <div className={globalStyles.startContainerItem}>
             <center>
               <Button
                 endIcon={<CalculateRounded />}
