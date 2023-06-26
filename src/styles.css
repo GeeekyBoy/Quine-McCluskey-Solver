@@ -1,0 +1,132 @@
+.root {
+  background-image: url(./assets/img/bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.centering-root {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  justify-content: center;
+}
+
+.centered-container {
+  align-self: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.start-container {
+  min-width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.start-container-item {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.start-container-item .MuiTextField-root {
+  width: 100%;
+}
+
+.mansory {
+  margin: 0 auto;
+}
+
+.grid-item {
+  margin: 2vw auto;
+  width: 90vw;
+  max-width: 600px;
+}
+
+.table {
+  border-collapse: unset!important;
+  min-width: 300px;
+}
+
+.table .MuiToolbar-root {
+  background-color: #073042;
+  justify-content: center;
+}
+
+.table .MuiToolbar-root .MuiTypography-root {
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.table .MuiTableHead-root {
+  background-color: #073042;
+}
+
+.table .MuiTableHead-root .MuiTableCell-head {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.table .MuiTableBody-root {
+  background-color: #D7EFFE;
+}
+
+.table .MuiTableBody-root .MuiTableCell-body {
+  color: #073042;
+  font-weight: bold;
+}
+
+.cancelled {
+  background-color: #073042!important;
+  color: #3DDC84!important;
+  border-bottom: none!important;
+}
+
+.single {
+  color: #F86734!important;
+  font-weight: bold;
+}
+
+.dashed-border {
+  border: dashed!important;
+  border-color: #3DDC84!important;
+}
+
+.red-border {
+  border-color: #F86734!important;
+  border-width: thick!important;
+}
+
+.numbered-bg {
+  background-position: left bottom, center!important;
+  background-repeat: no-repeat, repeat!important;
+}
+
+.petrick-card {
+  background: #D7EFFE;
+}
+
+.petrick-card .MuiTypography-root {
+  color: #073042;
+}
+
+.new-function-btn {
+  color: #000000;
+  font-weight: bold;
+  margin-top: 10px!important;
+  border: 1px solid #00000080!important;
+}
+
+.no-minimization-card-media {
+  height: 260px;
+}
+
+.logo {
+  font-weight: 900!important;
+  margin-bottom: 10px!important;
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import globalStyles from "../styles";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -9,7 +8,7 @@ export default function (props) {
     .map((step) => step.map((bracket) => `(${bracket.join(" + ")})`).join(""))
     .join(" = ");
   return (
-    <Card className={globalStyles.petrickCard}>
+    <Card className="petrick-card">
       <CardContent align="center">
         <Typography variant="h4">
           <b>{`${props.index}. Applying Petrick Method`}</b>

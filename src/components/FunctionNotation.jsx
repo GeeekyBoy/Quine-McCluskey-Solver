@@ -1,5 +1,4 @@
 import React from "react";
-import globalStyles from "../styles";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import numberToImage from "../utils/numberToImg";
@@ -8,15 +7,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { setIsResultShown } from "./Result";
 import varStore from "../utils/varStore";
-import { css } from '@emotion/css';
 
 export default function (props) {
-  const styles = {
-    root: css({
-      backgroundColor: "#FFDE03 !important",
-      background: `url(${numberToImage(props.index.toString())})`
-    })
-  };
   const navigate = useNavigate();
   const handleNewFunction = () => {
     setIsResultShown(false);
@@ -26,7 +18,13 @@ export default function (props) {
     }, 500);
   };
   return (
-    <Card className={`${globalStyles.numberedBG} ${styles.root}`}>
+    <Card
+      className="numbered-bg"
+      style={{
+          backgroundColor: "#FFDE03",
+          backgroundImage: `url(${numberToImage(props.index.toString())})`
+      }}
+    >
       <CardContent align="center">
         <Typography variant="h4">
           <b>{`F(${varStore.initInputLetters.join(
@@ -37,7 +35,7 @@ export default function (props) {
               : ""
           }`}</b>
         </Typography>
-        <Button variant="outlined" className={globalStyles.newFunctionBtn} onClick={handleNewFunction}>
+        <Button variant="outlined" className="new-function-btn" onClick={handleNewFunction}>
           <Typography>New Function</Typography>
         </Button>
       </CardContent>

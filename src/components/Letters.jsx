@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import globalStyles from "../styles";
 import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -44,18 +43,18 @@ export default function () {
       setTimeout(() => navigate("/result"), 500);
     }
   };
-  document.body.classList.add(globalStyles.centeringRoot);
-  document.getElementById("root").classList.add(globalStyles.ceneredContainer);
+  document.body.classList.add("centering-root");
+  document.getElementById("root").classList.add("centered-container");
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
-      <Paper className={globalStyles.startContainer}>
+      <Paper className="start-container">
         <form noValidate autoComplete="off">
-          <div className={globalStyles.startContainerItem}>
+          <div className="start-container-item">
             <center>
               <Typography variant="h4">Name The Inputs</Typography>
             </center>
           </div>
-          <div className={globalStyles.startContainerItem}>
+          <div className="start-container-item">
             <TextField
               helperText={errMsg ? errMsg : null}
               error={!!errMsg}
@@ -66,7 +65,7 @@ export default function () {
               variant="filled"
             />
           </div>
-          <div className={globalStyles.startContainerItem}>
+          <div className="start-container-item">
             <center>
               <Button
                 endIcon={<CalculateRounded />}

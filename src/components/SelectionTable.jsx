@@ -1,5 +1,4 @@
 import React from "react";
-import globalStyles from "../styles";
 import Table from "@mui/material/Table";
 import Typography from "@mui/material/Typography";
 import TableBody from "@mui/material/TableBody";
@@ -23,7 +22,7 @@ export default function (props) {
     }
   };
   return (
-    <TableContainer component={Paper} className={globalStyles.table}>
+    <TableContainer component={Paper} className="table">
       <Toolbar>
         <Typography>{`${props.index}. ${title()}`}</Typography>
       </Toolbar>
@@ -38,7 +37,7 @@ export default function (props) {
                 (props.columnDominance && props.stepsData.includes(availCol))
               ) {
                 return (
-                  <TableCell key={i} align="center" className={globalStyles.cancelled}>
+                  <TableCell key={i} align="center" className="cancelled">
                     {availCol}
                   </TableCell>
                 );
@@ -60,7 +59,7 @@ export default function (props) {
                     props.stepsData.includes(primeImplicant[1]))
                 ) {
                   return (
-                    <TableCell key={i} align="center" className={globalStyles.cancelled}>
+                    <TableCell key={i} align="center" className="cancelled">
                       {primeImplicant[1]}
                     </TableCell>
                   );
@@ -77,15 +76,15 @@ export default function (props) {
                       <TableCell
                         key={i}
                         align="center"
-                        className={`${globalStyles.cancelled} ${
+                        className={`cancelled ${
                           primeImplicant[0].includes(availCol)
-                            ? globalStyles.dashedBorder
+                            ? "dashed-border"
                             : null
                         }
 												${
                           primeImplicant[0].includes(availCol) &&
                           props.stepsData[2].includes(primeImplicant[1])
-                            ? globalStyles.redBorder
+                            ? "red-border"
                             : null
                         }`}
                       >
@@ -101,9 +100,9 @@ export default function (props) {
                       <TableCell
                         key={i}
                         align="center"
-                        className={`${globalStyles.cancelled} ${globalStyles.dashedBorder} ${globalStyles.redBorder}`}
+                        className="cancelled dashed-border red-border"
                       >
-                        <Typography className={globalStyles.single}>X</Typography>
+                        <Typography className="single">X</Typography>
                       </TableCell>
                     );
                   } else {
@@ -113,7 +112,7 @@ export default function (props) {
                         align="center"
                         className={
                           props.stepsData[2].includes(primeImplicant[1])
-                            ? globalStyles.cancelled
+                            ? "cancelled"
                             : null
                         }
                       >
@@ -127,7 +126,7 @@ export default function (props) {
                   (props.columnDominance && props.stepsData.includes(availCol))
                 ) {
                   return (
-                    <TableCell key={i} align="center" className={globalStyles.cancelled}>
+                    <TableCell key={i} align="center" className="cancelled">
                       {primeImplicant[0].includes(availCol) ? "X" : ""}
                     </TableCell>
                   );

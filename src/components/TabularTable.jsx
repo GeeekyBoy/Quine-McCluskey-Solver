@@ -1,5 +1,4 @@
 import React from "react";
-import globalStyles from "../styles";
 import Table from "@mui/material/Table";
 import Toolbar from "@mui/material/Toolbar";
 import TableBody from "@mui/material/TableBody";
@@ -13,7 +12,7 @@ import Typography from "@mui/material/Typography";
 export default function (props) {
   let rows = props.rows;
   return (
-    <TableContainer component={Paper} className={globalStyles.table}>
+    <TableContainer component={Paper} className="table">
       <Toolbar>
         <Typography>{`${props.index}. Finding Prime Implicants`}</Typography>
       </Toolbar>

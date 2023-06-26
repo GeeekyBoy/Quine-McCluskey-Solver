@@ -1,21 +1,19 @@
 import React from "react";
-import globalStyles from "../styles";
 import numberToImage from "../utils/numberToImg";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { css } from '@emotion/css';
 
 export default function (props) {
-  const styles = {
-    root: css({
-      backgroundColor: "#F86734 !important",
-      background: `url(${numberToImage(props.index.toString())})`,
-      color: "#FFFFFF !important"
-    })
-  };
   return (
-    <Card className={`${globalStyles.numberedBG} ${styles.root}`}>
+    <Card
+      className="numbered-bg"
+      style={{
+        backgroundColor: "#F86734",
+        backgroundImage: `url(${numberToImage(props.index.toString())})`,
+        color: "#FFFFFF"
+      }}
+    >
       <CardContent align="center">
         <Typography variant="h4">
           <b>

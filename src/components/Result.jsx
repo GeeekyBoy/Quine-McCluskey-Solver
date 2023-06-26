@@ -1,7 +1,6 @@
 import { Fade } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import minimizeFunction from "../core/minimizeFunction";
-import globalStyles from "../styles";
 export let appendStep = () => {};
 export let setIsResultShown = () => {};
 
@@ -13,20 +12,20 @@ export default function () {
     setChildren((oldChildren) => [
       ...oldChildren,
       <div
-        className={globalStyles.gridItem}
+        className="grid-item"
         key={"_" + Math.random().toString(36).substr(2, 9)}
       >
         {child}
       </div>
     ]);
   };
-  document.body.classList.remove(globalStyles.centeringRoot);
-  document.getElementById("root").classList.remove(globalStyles.ceneredContainer);
+  document.body.classList.remove("centering-root");
+  document.getElementById("root").classList.remove("centered-container");
   useEffect(() => {
     minimizeFunction();
   }, []);
   return (
-    <div className={globalStyles.Masonry}>
+    <div className="mansory">
       <Fade timeout={500} in={isShown} appear={isShown}>
         <div>{children}</div>
       </Fade>

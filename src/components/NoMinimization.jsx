@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import globalStyles from "../styles";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -20,13 +19,13 @@ export default function () {
       navigate("/");
     }, 500);
   };
-  document.body.classList.add(globalStyles.centeringRoot);
-  document.getElementById("root").classList.add(globalStyles.ceneredContainer);
+  document.body.classList.add("centering-root");
+  document.getElementById("root").classList.add("centered-container");
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
-      <Card className={globalStyles.startContainer}>
+      <Card className="start-container">
         <CardMedia
-          className={globalStyles.noMinimizationCardMedia}
+          className="no-minimization-card-media"
           image={noMinimizationImg}
           title="Contemplative Reptile"
         />
@@ -43,7 +42,7 @@ export default function () {
           </Typography>
           <Button
             variant="outlined"
-            className={globalStyles.newFunctionBtn}
+            className="new-function-btn"
             onClick={handleNewFunction}
           >
             <Typography>New Function</Typography>
