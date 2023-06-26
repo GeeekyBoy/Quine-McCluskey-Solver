@@ -9,69 +9,64 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Toolbar from "@mui/material/Toolbar";
 
-export default function (props) {
-  const title = () => {
-    if (props.extractSingles) {
-      return "Finding Unique Minterms";
-    } else if (props.columnDominance) {
-      return "Applying Column Dominance";
-    } else if (props.rowDominance) {
-      return "Applying Row Dominance";
-    } else {
-      return "Prime Implicants Chart";
-    }
-  };
+export default function ({
+  index,
+  extractSingles,
+  colDominance,
+  rowDominance,
+  steps,
+  availCols,
+  primeImplicants
+}) {
   return (
     <TableContainer component={Paper} className="table">
       <Toolbar>
-        <Typography>{`${props.index}. ${title()}`}</Typography>
+        <Typography>
+          {index}. {
+            extractSingles ? "Finding Unique Minterms" :
+            colDominance ? "Applying Column Dominance" :
+            rowDominance ? "Applying Row Dominance" :
+            "Prime Implicants Chart"
+          }
+        </Typography>
       </Toolbar>
       <Table>
         <TableHead>
           <TableRow>
             <TableCell align="center">Minterms</TableCell>
-            {props.availCols.map((availCol, i) => {
-              if (
-                (props.extractSingles &&
-                  props.stepsData[1].includes(availCol)) ||
-                (props.columnDominance && props.stepsData.includes(availCol))
-              ) {
-                return (
-                  <TableCell key={i} align="center" className="cancelled">
-                    {availCol}
-                  </TableCell>
-                );
-              } else {
-                return <TableCell key={i} align="center">{availCol}</TableCell>;
-              }
-            })}
+            {availCols.map((availCol, i) => (
+              (
+                (extractSingles && steps[1].includes(availCol)) ||
+                (colDominance && steps.includes(availCol))
+              ) ? (
+                <TableCell key={i} align="center" className="cancelled">
+                  {availCol}
+                </TableCell>
+              ) : (
+                <TableCell key={i} align="center">{availCol}</TableCell>
+              )
+            ))}
             <TableCell align="center">Cost</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.primeImplicants.map((primeImplicant, i) => (
+          {primeImplicants.map((primeImplicant, i) => (
             <TableRow key={primeImplicant[1]}>
-              {(() => {
-                if (
-                  (props.extractSingles &&
-                    props.stepsData[2].includes(primeImplicant[1])) ||
-                  (props.rowDominance &&
-                    props.stepsData.includes(primeImplicant[1]))
-                ) {
-                  return (
-                    <TableCell key={i} align="center" className="cancelled">
-                      {primeImplicant[1]}
-                    </TableCell>
-                  );
-                } else {
-                  return (
-                    <TableCell key={i} align="center">{primeImplicant[1]}</TableCell>
-                  );
-                }
-              })()}
-              {props.availCols.map((availCol, i) => {
-                if (props.extractSingles) {
-                  if (props.stepsData[1].includes(availCol)) {
+              {
+                (
+                  (extractSingles && steps[2].includes(primeImplicant[1])) ||
+                  (rowDominance && steps.includes(primeImplicant[1]))
+                ) ? (
+                  <TableCell key={i} align="center" className="cancelled">
+                    {primeImplicant[1]}
+                  </TableCell>
+                ) : (
+                  <TableCell key={i} align="center">{primeImplicant[1]}</TableCell>
+                )
+              }
+              {availCols.map((availCol, i) => {
+                if (extractSingles) {
+                  if (steps[1].includes(availCol)) {
                     return (
                       <TableCell
                         key={i}
@@ -80,28 +75,23 @@ export default function (props) {
                           primeImplicant[0].includes(availCol)
                             ? "dashed-border"
                             : null
-                        }
-												${
+                        } ${
                           primeImplicant[0].includes(availCol) &&
-                          props.stepsData[2].includes(primeImplicant[1])
+                          steps[2].includes(primeImplicant[1])
                             ? "red-border"
                             : null
                         }`}
                       >
-                        {primeImplicant[0].includes(availCol) ? "X" : ""}
+                        {primeImplicant[0].includes(availCol) && "X"}
                       </TableCell>
                     );
                   } else if (
-                    props.stepsData[0].includes(availCol) &&
-                    props.stepsData[2].includes(primeImplicant[1]) &&
+                    steps[0].includes(availCol) &&
+                    steps[2].includes(primeImplicant[1]) &&
                     primeImplicant[0].includes(availCol)
                   ) {
                     return (
-                      <TableCell
-                        key={i}
-                        align="center"
-                        className="cancelled dashed-border red-border"
-                      >
+                      <TableCell key={i} align="center" className="cancelled dashed-border red-border">
                         <Typography className="single">X</Typography>
                       </TableCell>
                     );
@@ -111,29 +101,28 @@ export default function (props) {
                         key={i}
                         align="center"
                         className={
-                          props.stepsData[2].includes(primeImplicant[1])
+                          steps[2].includes(primeImplicant[1])
                             ? "cancelled"
                             : null
                         }
                       >
-                        {primeImplicant[0].includes(availCol) ? "X" : ""}
+                        {primeImplicant[0].includes(availCol) && "X"}
                       </TableCell>
                     );
                   }
                 } else if (
-                  (props.rowDominance &&
-                    props.stepsData.includes(primeImplicant[1])) ||
-                  (props.columnDominance && props.stepsData.includes(availCol))
+                  (rowDominance && steps.includes(primeImplicant[1])) ||
+                  (colDominance && steps.includes(availCol))
                 ) {
                   return (
                     <TableCell key={i} align="center" className="cancelled">
-                      {primeImplicant[0].includes(availCol) ? "X" : ""}
+                      {primeImplicant[0].includes(availCol) && "X"}
                     </TableCell>
                   );
                 } else {
                   return (
                     <TableCell key={i} align="center">
-                      {primeImplicant[0].includes(availCol) ? "X" : ""}
+                      {primeImplicant[0].includes(availCol) && "X"}
                     </TableCell>
                   );
                 }

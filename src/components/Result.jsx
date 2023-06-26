@@ -13,7 +13,7 @@ export default function () {
       ...oldChildren,
       <div
         className="grid-item"
-        key={"_" + Math.random().toString(36).substr(2, 9)}
+        key={"_" + Math.random().toString(36).substring(2, 9)}
       >
         {child}
       </div>

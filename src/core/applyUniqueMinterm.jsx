@@ -1,17 +1,18 @@
 import React from "react";
 import SelectionTable from "../components/SelectionTable";
-import colsParser from "../utils/colsParser";
+import cloneObj from "../utils/cloneObj";
+import parseCols from "../utils/parseCols";
 import { appendStep } from "../components/Result";
 import varStore from "../utils/varStore";
 
 export default function (primes) {
   const essentials = [];
   const tableData = [[], [], []];
-  const prevPrimes = JSON.parse(JSON.stringify(primes));
-  for (const i of [...Array(primes.length).keys()]) {
+  const prevPrimes = cloneObj(primes);
+  for (const i of Array(primes.length).keys()) {
     if (primes[i]) {
       const notSingle = [];
-      for (const j of [...Array(primes.length).keys()]) {
+      for (const j of Array(primes.length).keys()) {
         if (i !== j && primes[j]) {
           for (const item of primes[i][0]) {
             if (primes[j][0].includes(item) && !notSingle.includes(item)) {
@@ -26,7 +27,7 @@ export default function (primes) {
         tableData[1] = [...new Set(tableData[1].concat(notSingle))];
         tableData[2].push(primes[i][1]);
         essentials.push(primes[i][1]);
-        for (const j of [...Array(primes.length).keys()]) {
+        for (const j of Array(primes.length).keys()) {
           if (i !== j && primes[j]) {
             primes[j][0] = primes[j][0].filter(
               (x) => !primes[i][0].includes(x)
@@ -45,19 +46,19 @@ export default function (primes) {
     appendStep(
       <SelectionTable
         index={varStore.currentStep++}
-        availCols={Object.keys(colsParser(prevPrimes))
+        availCols={Object.keys(parseCols(prevPrimes))
           .map((x) => parseInt(x, 10))
           .sort()}
         primeImplicants={prevPrimes}
         extractSingles={true}
-        stepsData={tableData}
+        steps={tableData}
       />
     );
     if (primes.length > 0) {
       appendStep(
         <SelectionTable
           index={varStore.currentStep++}
-          availCols={Object.keys(colsParser(primes))
+          availCols={Object.keys(parseCols(primes))
             .map((x) => parseInt(x, 10))
             .sort()}
           primeImplicants={primes}

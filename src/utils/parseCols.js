@@ -1,4 +1,4 @@
-export default function (primes) {
+export default (primes) => {
   let cols = {};
   for (const prime of primes) {
     for (const col of prime[0]) {

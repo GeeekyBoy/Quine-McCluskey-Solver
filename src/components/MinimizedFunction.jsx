@@ -4,13 +4,13 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
-export default function (props) {
+export default function ({ index, minimizations }) {
   return (
     <Card
       className="numbered-bg"
       style={{
         backgroundColor: "#3DDB85",
-        backgroundImage: `url(${numberToImage(props.index.toString())})`,
+        backgroundImage: `url(${numberToImage(index.toString())})`,
         color: "#FFFFFF"
       }}
     >
@@ -18,9 +18,9 @@ export default function (props) {
         <Typography variant="h4">
           <b>Possible Function Minimizations</b>
         </Typography>
-        {props.minimizations.map((minimization, i) => (
+        {minimizations.map((minimization, i) => (
           <Typography key={i} variant="h4" style={{ margin: 10 }}>
-            {`F = ${minimization.join(" + ")}`}
+            F = {minimization.join(" + ")}
           </Typography>
         ))}
       </CardContent>

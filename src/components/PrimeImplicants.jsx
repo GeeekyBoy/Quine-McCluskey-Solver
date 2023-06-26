@@ -4,13 +4,13 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
-export default function (props) {
+export default function ({ index, implicants }) {
   return (
     <Card
       className="numbered-bg"
       style={{
         backgroundColor: "#4282F2",
-        backgroundImage: `url(${numberToImage(props.index.toString())})`,
+        backgroundImage: `url(${numberToImage(index.toString())})`,
         color: "#FFFFFF"
       }}
     >
@@ -19,7 +19,7 @@ export default function (props) {
           <b>The Prime Implicants Are</b>
         </Typography>
         <Typography variant="h4" style={{ margin: 10 }}>
-          {props.implicants.join(", ")}
+          {implicants.join(", ")}
         </Typography>
       </CardContent>
     </Card>

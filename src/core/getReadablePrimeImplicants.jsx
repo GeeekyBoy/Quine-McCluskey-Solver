@@ -6,8 +6,8 @@ import { appendStep } from "../components/Result";
 
 export default function () {
   let primes = getPrimeImplicants();
-  let alphabiticalImplicants = [];
-  for (const i of [...Array(primes.length).keys()]) {
+  const alphabeticalImplicants = [];
+  for (const i of Array(primes.length).keys()) {
     let cost = 0;
     primes[i][0] = primes[i][0].filter(
       (x) => !varStore.initDonotCares.includes(x)
@@ -26,8 +26,8 @@ export default function () {
         }
       })
       .join("");
-    alphabiticalImplicants.push(primes[i][1]);
-    if (!primes[i][1].match(new RegExp("^[AZ]'?$", "m"))) {
+    alphabeticalImplicants.push(primes[i][1]);
+    if (!primes[i][1].match(/^[AZ]'?$/m)) {
       cost += 1;
     }
     primes[i][2] = cost;
@@ -39,7 +39,7 @@ export default function () {
   appendStep(
     <PrimeImplicants
       index={varStore.currentStep++}
-      implicants={alphabiticalImplicants}
+      implicants={alphabeticalImplicants}
     />
   );
   return primes;

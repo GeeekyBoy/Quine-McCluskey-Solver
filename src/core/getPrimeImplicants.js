@@ -17,6 +17,5 @@ export default function () {
       break;
     }
   }
-  primes = Array.from(new Set(primes.map(JSON.stringify))).map(JSON.parse);
-  return primes;
+  return [...new Set(primes.map(JSON.stringify))].map(JSON.parse);
 }

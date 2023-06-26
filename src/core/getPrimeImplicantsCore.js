@@ -6,7 +6,7 @@ export default function (input) {
   let result = [];
   const used = [];
   let primes = [];
-  for (const groupPairIndex of [...Array(groupsCount - 1).keys()]) {
+  for (const groupPairIndex of Array(groupsCount - 1).keys()) {
     let isGroupUsed = false;
     const pairFirstElement = input[groupPairIndex];
     const pairSecondElement = input[groupPairIndex + 1];
@@ -18,11 +18,7 @@ export default function (input) {
         );
         for (const pairSecondElementItem of pairSecondElement) {
           if (pattern.test(pairSecondElementItem[1])) {
-            const resultBinary = replaceAt(
-              pairSecondElementItem[1],
-              diffPos,
-              "-"
-            );
+            const resultBinary = replaceAt(pairSecondElementItem[1], diffPos, "-");
             isUsed = true;
             if (!isGroupUsed) {
               result.push([]);
@@ -35,11 +31,7 @@ export default function (input) {
               used.push(pairSecondElementItem[1]);
             }
             result[result.length - 1].push([
-              [
-                ...new Set(
-                  pairFirstElementItem[0].concat(pairSecondElementItem[0])
-                )
-              ].sort(),
+              [...new Set(pairFirstElementItem[0].concat(pairSecondElementItem[0]))].sort(),
               resultBinary
             ]);
           }
@@ -57,10 +49,8 @@ export default function (input) {
       }
     }
   }
-  result = result.map((x) =>
-    Array.from(new Set(x.map(JSON.stringify))).map(JSON.parse)
-  );
-  primes = Array.from(new Set(primes.map(JSON.stringify))).map(JSON.parse);
+  result = result.map((x) => [...new Set(x.map(JSON.stringify))].map(JSON.parse));
+  primes = [...new Set(primes.map(JSON.stringify))].map(JSON.parse);
   return {
     result,
     primes

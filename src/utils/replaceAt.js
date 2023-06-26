@@ -1,4 +1,4 @@
-export default function (input, index, replacement) {
+export default (input, index, replacement) => {
   if (index >= input.length) {
     return input.valueOf();
   }

@@ -14,29 +14,21 @@ export default function () {
   const [isLettersChanged, setIsLettersChanged] = useState(false);
   const [letters, setLetters] = useState("");
   const [errMsg, setErrMsg] = useState(null);
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     setIsLettersChanged(true);
-    setLetters(event.target.value);
-    if (!event.target.value.match(new RegExp("^[A-Z]*$", "g"))) {
-      setErrMsg("Capital letters only with no spaces !");
-    } else {
-      if (
-        !event.target.value.match(
-          new RegExp(`^[A-Z]{${varStore.initInputsNumber}}$`, "g")
-        )
-      ) {
-        setErrMsg(
-          `You have to name just ${varStore.initInputsNumber} inputs !`
-        );
-      } else {
-        setErrMsg(null);
-      }
-    }
+    setLetters(e.target.value);
+    setErrMsg(
+      !e.target.value.match(/^[A-Z]*$/)
+      ? "Only capital letters with no spaces are allowed"
+      : !e.target.value.match(RegExp(`^[A-Z]{${varStore.initInputsNumber}}$`))
+      ? `Only ${varStore.initInputsNumber} inputs have to be named`
+      : null
+    )
   };
-  const solve = (event) => {
-    event.preventDefault();
+  const solve = (e) => {
+    e.preventDefault();
     if (!isLettersChanged) {
-      setErrMsg(`You have to name just ${varStore.initInputsNumber} inputs !`);
+      setErrMsg(`${varStore.initInputsNumber} inputs have to be named`);
     } else if (!errMsg) {
       varStore.initInputLetters = letters.split("");
       setIsShown(false);
@@ -56,10 +48,10 @@ export default function () {
           </div>
           <div className="start-container-item">
             <TextField
-              helperText={errMsg ? errMsg : null}
-              error={!!errMsg}
               id="outlined-basic"
               label={`Enter ${varStore.initInputsNumber} Letters`}
+              helperText={errMsg ? errMsg : null}
+              error={!!errMsg}
               onChange={handleChange}
               size="small"
               variant="filled"

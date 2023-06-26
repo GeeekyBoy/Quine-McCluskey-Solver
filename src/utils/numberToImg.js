@@ -1,4 +1,4 @@
-export default function (number = "0") {
+export default (number = "0") => {
   const c = document.createElement("canvas");
   c.height = 57;
   const ctx = c.getContext("2d");

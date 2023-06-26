@@ -8,7 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import { setIsResultShown } from "./Result";
 import varStore from "../utils/varStore";
 
-export default function (props) {
+export default function ({ index }) {
   const navigate = useNavigate();
   const handleNewFunction = () => {
     setIsResultShown(false);
@@ -22,18 +22,15 @@ export default function (props) {
       className="numbered-bg"
       style={{
           backgroundColor: "#FFDE03",
-          backgroundImage: `url(${numberToImage(props.index.toString())})`
+          backgroundImage: `url(${numberToImage(index.toString())})`
       }}
     >
       <CardContent align="center">
         <Typography variant="h4">
-          <b>{`F(${varStore.initInputLetters.join(
-            ", "
-          )}) = Σm(${varStore.initMinterms.join(", ")})${
-            varStore.initDonotCares.length > 0
-              ? ` + Σd(${varStore.initDonotCares.join(", ")})`
-              : ""
-          }`}</b>
+          <b>
+            F({varStore.initInputLetters.join(", ")}) = Σm({varStore.initMinterms.join(", ")})
+            {varStore.initDonotCares.length > 0 && ` + Σd(${varStore.initDonotCares.join(", ")})`}
+          </b>
         </Typography>
         <Button variant="outlined" className="new-function-btn" onClick={handleNewFunction}>
           <Typography>New Function</Typography>

@@ -17,68 +17,45 @@ export default function () {
   const [isMintermsChanged, setIsMintermsChanged] = useState(false);
   const [minterms, setMinterms] = useState("");
   const [donotCares, setDonotCares] = useState("");
-  const [enteredInputsNumber, setEnteredInputsNumber] = useState(0);
+  const [inputsCount, setInputsCount] = useState(0);
   const [mintermsErrMsg, setMintermsErrMsg] = useState(null);
   const [donotCaresErrMsg, setDonotCaresErrMsg] = useState(null);
   const [isComplementAvail, setIsComplementAvail] = useState(false);
-  const handleMintermsChange = (event) => {
+  const handleMintermsChange = (e) => {
     setIsMintermsChanged(true);
-    setMinterms(event.target.value);
-    if (
-      !event.target.value.match(new RegExp("([0-9]+)(?<= *,* *)", "g")) ||
-      event.target.value.match(new RegExp("[^0-9 ,]", "g"))
-    ) {
-      setMintermsErrMsg("Numbers separated by spaces and commas only !");
-    } else {
-      setMintermsErrMsg(null);
-    }
-  };
-  const handleDonotCaresChange = (event) => {
-    setDonotCares(event.target.value);
-    if (
-      !event.target.value.match(new RegExp("([0-9]+)(?<= *,* *)", "g")) ||
-      event.target.value.match(new RegExp("[^0-9 ,]", "g"))
-    ) {
-      setDonotCaresErrMsg("Numbers separated by spaces and commas only !");
-    } else {
-      setDonotCaresErrMsg(null);
-    }
-  };
-  const handleInputsNumberChange = (event) => {
-    setEnteredInputsNumber(
-      Number.isInteger(parseInt(event.target.value, 10))
-        ? parseInt(event.target.value, 10)
-        : 0
+    setMinterms(e.target.value);
+    setMintermsErrMsg(
+      (!e.target.value.match(/(\d+)(?<= *,* *)/g) || e.target.value.match(/[^0-9 ,]/g))
+      ? "Numbers can be only separated by spaces and commas"
+      : null
     );
   };
-  const handleComplementAvailChange = (event) => {
-    setIsComplementAvail(event.target.checked);
+  const handleDonotCaresChange = (e) => {
+    setDonotCares(e.target.value);
+    setDonotCaresErrMsg(
+      (!e.target.value.match(/(\d+)(?<= *,* *)/g) || e.target.value.match(/[^0-9 ,]/g))
+      ? "Numbers can be only separated by spaces and commas"
+      : null
+    )
   };
-  const nextPage = (event) => {
-    event.preventDefault();
+  const handleInputsNumberChange = (e) => {
+    setInputsCount(Number.isInteger(parseInt(e.target.value, 10)) ? e.target.value : 0);
+  };
+  const handleComplementAvailChange = (e) => {
+    setIsComplementAvail(e.target.checked);
+  };
+  const nextPage = (e) => {
+    e.preventDefault();
     if (!isMintermsChanged) {
-      setMintermsErrMsg(`Please enter minterms !`);
+      setMintermsErrMsg("Minterms are required");
     } else if (!mintermsErrMsg && !donotCaresErrMsg) {
-      varStore.initMinterms = minterms
-        .match(new RegExp("[0-9]+", "g"))
-        .map((x) => parseInt(x, 10));
+      varStore.initMinterms = minterms.match(/\d+/g).map((x) => parseInt(x, 10));
       if (donotCares.length > 0) {
-        varStore.initDonotCares = donotCares
-          .match(new RegExp("[0-9]+", "g"))
-          .map((x) => parseInt(x, 10));
+        varStore.initDonotCares = donotCares.match(/\d+/g).map((x) => parseInt(x, 10));
       }
-      const mintermsPlusDonotcares = varStore.initMinterms.concat(
-        varStore.initDonotCares
-      );
-      const supposedInputsNumber =
-        parseInt(
-          Math.log2(Math.max(...[...new Set(mintermsPlusDonotcares)])),
-          10
-        ) + 1;
-      varStore.initInputsNumber =
-        enteredInputsNumber < supposedInputsNumber
-          ? supposedInputsNumber
-          : enteredInputsNumber;
+      const mintermsPlusDonotcares = varStore.initMinterms.concat(varStore.initDonotCares);
+      const minInputsCount = parseInt(Math.log2(Math.max(...new Set(mintermsPlusDonotcares))), 10) + 1;
+      varStore.initInputsNumber = Math.max(inputsCount, minInputsCount);
       if (mintermsPlusDonotcares.length === 2 ** varStore.initInputsNumber) {
         setIsShown(false);
         setTimeout(() => navigate("/no-minimization"), 500);
@@ -98,17 +75,17 @@ export default function () {
           <div className="start-container-item">
             <center>
               <Typography variant="h4" className="logo">
-                Quine McCluskey Solver !
+                Quine McCluskey Solver
               </Typography>
               <Typography variant="h5">Enter Function Information</Typography>
             </center>
           </div>
           <div className="start-container-item">
             <TextField
+              id="minterms"
+              label="Minterms"
               helperText={mintermsErrMsg ? mintermsErrMsg : null}
               error={!!mintermsErrMsg}
-              id="outlined-basic"
-              label="Minterms"
               onChange={handleMintermsChange}
               size="small"
               variant="filled"
@@ -116,10 +93,10 @@ export default function () {
           </div>
           <div className="start-container-item">
             <TextField
+              id="donot-cares"
+              label="Don't Cares"
               helperText={donotCaresErrMsg ? donotCaresErrMsg : null}
               error={!!donotCaresErrMsg}
-              id="outlined-basic"
-              label="Don't Cares"
               onChange={handleDonotCaresChange}
               size="small"
               variant="filled"
@@ -127,16 +104,14 @@ export default function () {
           </div>
           <div className="start-container-item">
             <TextField
-              id="filled-number"
-              label="Inputs Number"
+              id="inputs-count"
+              label="Inputs Count"
+              helperText="Leave blank to be calculated automatically"
               type="number"
               onChange={handleInputsNumberChange}
-              inputProps={{
-                min: 1
-              }}
+              inputProps={{ min: 1 }}
               size="small"
               variant="filled"
-              helperText="Leave blank to be calcualted automatically"
             />
           </div>
           <div className="start-container-item">
@@ -144,12 +119,12 @@ export default function () {
               <FormControlLabel
                 control={
                   <Checkbox
+                    name="complement-avail"
                     checked={isComplementAvail}
                     onChange={handleComplementAvailChange}
-                    name="complementedAvailbility"
                   />
                 }
-                label="Complemented form is available"
+                label="Complements have no cost"
               />
             </FormGroup>
           </div>

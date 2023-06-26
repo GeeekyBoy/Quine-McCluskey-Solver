@@ -27,7 +27,7 @@ export default function () {
         <CardMedia
           className="no-minimization-card-media"
           image={noMinimizationImg}
-          title="Contemplative Reptile"
+          title="no minimization illustration"
         />
         <CardContent align="center">
           <Typography gutterBottom variant="h5">

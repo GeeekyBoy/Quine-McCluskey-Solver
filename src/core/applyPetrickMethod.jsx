@@ -1,4 +1,4 @@
-import colsParser from "../utils/colsParser";
+import parseCols from "../utils/parseCols";
 
 export default function (primes) {
   let primesPetrickMapping = {};
@@ -8,7 +8,7 @@ export default function (primes) {
     petrickPrimesMapping[val[1]] = `p${key + 1}`;
   }
   let steps = [
-    Object.values(colsParser(primes)).map((x) =>
+    Object.values(parseCols(primes)).map((x) =>
       x.map((y) => petrickPrimesMapping[y])
     )
   ];
@@ -16,9 +16,7 @@ export default function (primes) {
   while (steps[steps.length - 1].length > 1) {
     steps[++stepsLastIndex] = [];
     let j = 0;
-    for (const i of [
-      ...Array(Math.round(steps[steps.length - 2].length / 2)).keys()
-    ]) {
+    for (const i of Array(Math.round(steps[steps.length - 2].length / 2)).keys()) {
       let bracket = [];
       for (const leftItem of steps[steps.length - 2][i + j]) {
         if (steps[steps.length - 2][i + j + 1]) {
@@ -32,7 +30,7 @@ export default function (primes) {
         }
       }
       bracket = bracket.map((x) =>
-        [...new Set(x.match(new RegExp("..", "g")).sort())].join("")
+        [...new Set(x.match(/../g).sort())].join("")
       );
       bracket = [...new Set(bracket)];
       steps[stepsLastIndex].push(bracket);
@@ -50,12 +48,12 @@ export default function (primes) {
       essentials = [];
       petrickEssentials.push(item);
       essentials.push(
-        item.match(new RegExp("..", "g")).map((x) => primesPetrickMapping[x])
+        item.match(/../g).map((x) => primesPetrickMapping[x])
       );
     } else if (itemLength === minLength) {
       petrickEssentials.push(item);
       essentials.push(
-        item.match(new RegExp("..", "g")).map((x) => primesPetrickMapping[x])
+        item.match(/../g).map((x) => primesPetrickMapping[x])
       );
     }
   }

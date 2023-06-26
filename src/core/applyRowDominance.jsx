@@ -1,17 +1,15 @@
 import React from "react";
-import colsParser from "../utils/colsParser";
+import cloneObj from "../utils/cloneObj";
+import parseCols from "../utils/parseCols";
 import SelectionTable from "../components/SelectionTable";
 import { appendStep } from "../components/Result";
 import varStore from "../utils/varStore";
 
 export default function (primes) {
-  const rows = [];
-  const dominatedRowsIndecies = [];
+  const rows = primes.map((x) => x[0]);
+  const dominatedRowsIdx = [];
   const dominatedRows = [];
-  const prevPrimes = JSON.parse(JSON.stringify(primes));
-  for (const item of primes) {
-    rows.push(item[0]);
-  }
+  const prevPrimes = cloneObj(primes);
   for (const i of rows) {
     for (const j of rows) {
       if (i !== j) {
@@ -20,13 +18,13 @@ export default function (primes) {
           i.length < j.length &&
           primes[rows.indexOf(i)][2] >= primes[rows.indexOf(j)][2]
         ) {
-          dominatedRowsIndecies.push(rows.indexOf(i));
+          dominatedRowsIdx.push(rows.indexOf(i));
           dominatedRows.push(primes[rows.indexOf(i)][1]);
         }
       }
     }
   }
-  for (const i of dominatedRowsIndecies) {
+  for (const i of dominatedRowsIdx) {
     primes[i] = null;
   }
   primes = primes.filter((x) => x);
@@ -34,19 +32,19 @@ export default function (primes) {
     appendStep(
       <SelectionTable
         index={varStore.currentStep++}
-        availCols={Object.keys(colsParser(prevPrimes))
+        availCols={Object.keys(parseCols(prevPrimes))
           .map((x) => parseInt(x, 10))
           .sort()}
         primeImplicants={prevPrimes}
         rowDominance={true}
-        stepsData={dominatedRows}
+        steps={dominatedRows}
       />
     );
     if (primes.length > 0) {
       appendStep(
         <SelectionTable
           index={varStore.currentStep++}
-          availCols={Object.keys(colsParser(primes))
+          availCols={Object.keys(parseCols(primes))
             .map((x) => parseInt(x, 10))
             .sort()}
           primeImplicants={primes}

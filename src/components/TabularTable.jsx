@@ -9,12 +9,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-export default function (props) {
-  let rows = props.rows;
+export default function ({ index, rows, primes }) {
   return (
     <TableContainer component={Paper} className="table">
       <Toolbar>
-        <Typography>{`${props.index}. Finding Prime Implicants`}</Typography>
+        <Typography>{index}. Finding Prime Implicants</Typography>
       </Toolbar>
       <Table>
         <TableHead>
@@ -29,7 +28,9 @@ export default function (props) {
             <TableRow key={row.binary}>
               <TableCell align="center">{row.group}</TableCell>
               <TableCell align="center">{row.decimal}</TableCell>
-              <TableCell align="center">{row.binary}  {props.primes.includes(row.binary) ? "✹" : "✓"}</TableCell>
+              <TableCell align="center">
+                {row.binary}  {primes.includes(row.binary) ? "✹" : "✓"}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
