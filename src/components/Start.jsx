@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
 import { Fade } from "@mui/material";
 
-export default function () {
+const Start = () => {
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const [isMintermsChanged, setIsMintermsChanged] = useState(false);
@@ -165,3 +165,5 @@ export default function () {
     </Fade>
   );
 }
+
+export default Start;

@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
 import { Fade } from "@mui/material";
 
-export default function () {
+const Letter = () => {
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const [isLettersChanged, setIsLettersChanged] = useState(false);
@@ -74,3 +74,5 @@ export default function () {
     </Fade>
   );
 }
+
+export default Letter;

@@ -4,13 +4,13 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
-export default function ({ index, essentials }) {
+const EssentialImplicants = ({ idx, essentials }) => {
   return (
     <Card
       className="numbered-bg"
       style={{
         backgroundColor: "#F86734",
-        backgroundImage: `url(${numberToImage(index.toString())})`,
+        backgroundImage: `url(${numberToImage(idx.toString())})`,
         color: "#FFFFFF"
       }}
     >
@@ -31,3 +31,5 @@ export default function ({ index, essentials }) {
     </Card>
   );
 }
+
+export default EssentialImplicants;

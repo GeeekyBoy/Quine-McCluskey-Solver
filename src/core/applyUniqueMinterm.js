@@ -1,11 +1,8 @@
-import React from "react";
-import SelectionTable from "../components/SelectionTable";
 import cloneObj from "../utils/cloneObj";
 import parseCols from "../utils/parseCols";
-import { appendStep } from "../components/Result";
-import varStore from "../utils/varStore";
 
 export default function (primes) {
+  const steps = [];
   const essentials = [];
   const tableData = [[], [], []];
   const prevPrimes = cloneObj(primes);
@@ -43,31 +40,24 @@ export default function (primes) {
   }
   primes = primes.filter((x) => x);
   if (JSON.stringify(prevPrimes) !== JSON.stringify(primes)) {
-    appendStep(
-      <SelectionTable
-        index={varStore.currentStep++}
-        availCols={Object.keys(parseCols(prevPrimes))
-          .map((x) => parseInt(x, 10))
-          .sort()}
-        primeImplicants={prevPrimes}
-        extractSingles={true}
-        steps={tableData}
-      />
-    );
+    steps.push({
+      type: "selectionTable",
+      availCols: Object.keys(parseCols(prevPrimes))
+        .map((x) => parseInt(x, 10))
+        .sort(),
+      primeImplicants: prevPrimes,
+      extractSingles: true,
+      steps: tableData
+    });
     if (primes.length > 0) {
-      appendStep(
-        <SelectionTable
-          index={varStore.currentStep++}
-          availCols={Object.keys(parseCols(primes))
-            .map((x) => parseInt(x, 10))
-            .sort()}
-          primeImplicants={primes}
-        />
-      );
+      steps.push({
+        type: "selectionTable",
+        availCols: Object.keys(parseCols(primes))
+          .map((x) => parseInt(x, 10))
+          .sort(),
+        primeImplicants: primes,
+      });
     }
   }
-  return {
-    primes,
-    essentials
-  };
+  return { steps, primes, essentials};
 }

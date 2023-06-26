@@ -1,34 +1,61 @@
 import { Fade } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import minimizeFunction from "../core/minimizeFunction";
-export let appendStep = () => {};
-export let setIsResultShown = () => {};
+import varStore from "../utils/varStore";
+import SelectionTable from "./SelectionTable";
+import PrimeImplicants from "./PrimeImplicants";
+import EssentialImplicants from "./EssentialImplicants";
+import PetrickMethod from "./PetrickMethod";
+import TabularTable from "./TabularTable";
+import MinimizedFunction from "./MinimizedFunction";
+import FunctionNotation from "./FunctionNotation";
 
-export default function () {
-  const [isShown, setIsShown] = useState(true);
-  const [children, setChildren] = useState([]);
-  setIsResultShown = setIsShown;
-  appendStep = (child) => {
-    setChildren((oldChildren) => [
-      ...oldChildren,
-      <div
-        className="grid-item"
-        key={"_" + Math.random().toString(36).substring(2, 9)}
-      >
-        {child}
-      </div>
-    ]);
+const Result = () => {
+  const [steps, setSteps] = useState(null);
+  const navigate = useNavigate();
+  const handleNewFunction = () => {
+    setSteps(null);
+    setTimeout(() => {
+      varStore.reset();
+      navigate("/");
+    }, 500);
   };
   document.body.classList.remove("centering-root");
   document.getElementById("root").classList.remove("centered-container");
   useEffect(() => {
-    minimizeFunction();
+    setSteps(minimizeFunction());
   }, []);
   return (
     <div className="mansory">
-      <Fade timeout={500} in={isShown} appear={isShown}>
-        <div>{children}</div>
+      <Fade timeout={500} in={steps} appear={steps}>
+        <div>
+          <div className="grid-item">
+            <FunctionNotation idx={1} onNewFunction={handleNewFunction} />
+          </div>
+          {steps && steps.map(({ type, ...props }, index) => {
+            return (
+              <div className="grid-item" key={index}>
+                {type === "selectionTable" ? (
+                  <SelectionTable idx={index + 2} {...props} />
+                ) : type === "primeImplicants" ? (
+                  <PrimeImplicants idx={index + 2} {...props} />
+                ) : type === "essentialImplicants" ? (
+                  <EssentialImplicants idx={index + 2} {...props} />
+                ) : type === "petrickMethod" ? (
+                  <PetrickMethod idx={index + 2} {...props} />
+                ) : type === "tabularTable" ? (
+                  <TabularTable idx={index + 2} {...props} />
+                ) : type === "minimizedFunction" ? (
+                  <MinimizedFunction idx={index + 2} {...props} />
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
       </Fade>
     </div>
   );
 }
+
+export default Result;

@@ -4,13 +4,13 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
-export default function ({ index, minimizations }) {
+const MinimizedFunction = ({ idx, minimizations }) => {
   return (
     <Card
       className="numbered-bg"
       style={{
         backgroundColor: "#3DDB85",
-        backgroundImage: `url(${numberToImage(index.toString())})`,
+        backgroundImage: `url(${numberToImage(idx.toString())})`,
         color: "#FFFFFF"
       }}
     >
@@ -27,3 +27,5 @@ export default function ({ index, minimizations }) {
     </Card>
   );
 }
+
+export default MinimizedFunction;

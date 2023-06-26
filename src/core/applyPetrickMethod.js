@@ -57,10 +57,5 @@ export default function (primes) {
       );
     }
   }
-  return {
-    steps,
-    primesPetrickMapping,
-    petrickEssentials,
-    essentials
-  };
+  return { steps, primesPetrickMapping, petrickEssentials, essentials };
 }

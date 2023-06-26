@@ -3,19 +3,21 @@ import getPrimeImplicantsCore from "./getPrimeImplicantsCore";
 import showTabularTable from "../utils/showTabularTable";
 
 export default function () {
+  const steps = [];
   let primes = [];
   let minterms = parseMinterms();
   while (true) {
-    const stepResult = getPrimeImplicantsCore(minterms);
-    primes = primes.concat(stepResult.primes);
-    if (stepResult.result.length > 0) {
-      showTabularTable(minterms, stepResult.primes.flat());
-      minterms = stepResult.result;
+    const stepRes = getPrimeImplicantsCore(minterms);
+    primes = primes.concat(stepRes.primes);
+    if (stepRes.result.length > 0) {
+      steps.push(...showTabularTable(minterms, stepRes.primes.flat()));
+      minterms = stepRes.result;
     } else {
-      showTabularTable(minterms, minterms.flat(2));
+      steps.push(...showTabularTable(minterms, minterms.flat(2)));
       primes = primes.concat(minterms.flat());
       break;
     }
   }
-  return [...new Set(primes.map(JSON.stringify))].map(JSON.parse);
+  primes = [...new Set(primes.map(JSON.stringify))].map(JSON.parse);
+  return { steps, primes };
 }

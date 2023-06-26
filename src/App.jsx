@@ -14,7 +14,6 @@ function App() {
     document.getElementById("splash").remove();
     document.body.classList.add("root");
     navigate("/", { replace: true });
-    console.log("App loaded");
     setIsFirstLoad(false);
   }, []);
   return isFirstLoad ? null : (

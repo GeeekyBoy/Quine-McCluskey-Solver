@@ -3,12 +3,12 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
-export default function ({ index, steps, mapping }) {
+const PetrickMethod = ({ idx, steps, mapping }) => {
   return (
     <Card className="petrick-card">
       <CardContent align="center">
         <Typography variant="h4">
-          <b>{index}. Applying Petrick Method</b>
+          <b>{idx}. Applying Petrick Method</b>
         </Typography>
         {Object.entries(mapping).map(([k, v]) => (
           <Typography variant="h4">
@@ -22,3 +22,5 @@ export default function ({ index, steps, mapping }) {
     </Card>
   );
 }
+
+export default PetrickMethod;

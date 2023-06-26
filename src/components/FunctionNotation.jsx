@@ -1,28 +1,18 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import numberToImage from "../utils/numberToImg";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { setIsResultShown } from "./Result";
 import varStore from "../utils/varStore";
 
-export default function ({ index }) {
-  const navigate = useNavigate();
-  const handleNewFunction = () => {
-    setIsResultShown(false);
-    setTimeout(() => {
-      varStore.reset();
-      navigate("/");
-    }, 500);
-  };
+const FunctionNotation = ({ idx, onNewFunction }) => {
   return (
     <Card
       className="numbered-bg"
       style={{
           backgroundColor: "#FFDE03",
-          backgroundImage: `url(${numberToImage(index.toString())})`
+          backgroundImage: `url(${numberToImage(idx.toString())})`
       }}
     >
       <CardContent align="center">
@@ -32,10 +22,12 @@ export default function ({ index }) {
             {varStore.initDonotCares.length > 0 && ` + Σd(${varStore.initDonotCares.join(", ")})`}
           </b>
         </Typography>
-        <Button variant="outlined" className="new-function-btn" onClick={handleNewFunction}>
+        <Button variant="outlined" className="new-function-btn" onClick={onNewFunction}>
           <Typography>New Function</Typography>
         </Button>
       </CardContent>
     </Card>
   );
 }
+
+export default FunctionNotation;

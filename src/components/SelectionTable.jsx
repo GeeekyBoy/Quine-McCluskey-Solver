@@ -9,20 +9,20 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Toolbar from "@mui/material/Toolbar";
 
-export default function ({
-  index,
+const SelectionTable = ({
+  idx,
   extractSingles,
   colDominance,
   rowDominance,
   steps,
   availCols,
   primeImplicants
-}) {
+}) => {
   return (
     <TableContainer component={Paper} className="table">
       <Toolbar>
         <Typography>
-          {index}. {
+          {idx}. {
             extractSingles ? "Finding Unique Minterms" :
             colDominance ? "Applying Column Dominance" :
             rowDominance ? "Applying Row Dominance" :
@@ -135,3 +135,5 @@ export default function ({
     </TableContainer>
   );
 }
+
+export default SelectionTable;

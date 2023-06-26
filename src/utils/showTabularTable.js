@@ -1,9 +1,5 @@
-import React from "react";
-import TabularTable from "../components/TabularTable";
-import { appendStep } from "../components/Result";
-import varStore from "./varStore";
-
 export default function (minterms, primes) {
+  const steps = [];
   const createData = (group, decimal, binary) => {
     return { group, decimal, binary };
   };
@@ -19,5 +15,10 @@ export default function (minterms, primes) {
       );
     }
   }
-  appendStep(<TabularTable index={varStore.currentStep++} rows={rows} primes={primes} />);
+  steps.push({
+    type: "tabularTable",
+    rows: rows,
+    primes: primes
+  });
+  return steps;
 }

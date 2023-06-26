@@ -9,11 +9,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-export default function ({ index, rows, primes }) {
+const TabularTable = ({ idx, rows, primes }) => {
   return (
     <TableContainer component={Paper} className="table">
       <Toolbar>
-        <Typography>{index}. Finding Prime Implicants</Typography>
+        <Typography>{idx}. Finding Prime Implicants</Typography>
       </Toolbar>
       <Table>
         <TableHead>
@@ -38,3 +38,5 @@ export default function ({ index, rows, primes }) {
     </TableContainer>
   );
 }
+
+export default TabularTable;

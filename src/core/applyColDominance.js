@@ -1,11 +1,8 @@
-import React from "react";
-import SelectionTable from "../components/SelectionTable";
 import cloneObj from "../utils/cloneObj";
 import parseCols from "../utils/parseCols";
-import { appendStep } from "../components/Result";
-import varStore from "../utils/varStore";
 
 export default function (primes) {
+  const steps = [];
   const colImplicants = [];
   let dominatingCols = [];
   const prevPrimes = cloneObj(primes);
@@ -31,28 +28,24 @@ export default function (primes) {
     primes[i][0] = primes[i][0].filter((x) => !dominatingCols.includes(x));
   }
   if (JSON.stringify(prevPrimes) !== JSON.stringify(primes)) {
-    appendStep(
-      <SelectionTable
-        index={varStore.currentStep++}
-        availCols={Object.keys(parseCols(prevPrimes))
-          .map((x) => parseInt(x, 10))
-          .sort()}
-        primeImplicants={prevPrimes}
-        colDominance={true}
-        steps={dominatingCols}
-      />
-    );
+    steps.push({
+      type: "selectionTable",
+      availCols: Object.keys(parseCols(prevPrimes))
+        .map((x) => parseInt(x, 10))
+        .sort(),
+      primeImplicants: prevPrimes,
+      colDominance: true,
+      steps: dominatingCols,
+    });
     if (primes.length) {
-      appendStep(
-        <SelectionTable
-          index={varStore.currentStep++}
-          availCols={Object.keys(parseCols(primes))
-            .map((x) => parseInt(x, 10))
-            .sort()}
-          primeImplicants={primes}
-        />
-      );
+      steps.push({
+        type: "selectionTable",
+        availCols: Object.keys(parseCols(primes))
+          .map((x) => parseInt(x, 10))
+          .sort(),
+        primeImplicants: primes,
+      });
     }
   }
-  return primes;
+  return { steps, primes };
 }

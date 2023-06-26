@@ -1,11 +1,11 @@
-import React from "react";
 import getPrimeImplicants from "./getPrimeImplicants";
-import PrimeImplicants from "../components/PrimeImplicants";
 import varStore from "../utils/varStore";
-import { appendStep } from "../components/Result";
 
 export default function () {
-  let primes = getPrimeImplicants();
+  const steps = [];
+  let primeImplicantsRes = getPrimeImplicants();
+  steps.push(...primeImplicantsRes.steps);
+  let primes = primeImplicantsRes.primes;
   const alphabeticalImplicants = [];
   for (const i of Array(primes.length).keys()) {
     let cost = 0;
@@ -36,11 +36,9 @@ export default function () {
     }
   }
   primes = primes.filter((x) => x !== null);
-  appendStep(
-    <PrimeImplicants
-      index={varStore.currentStep++}
-      implicants={alphabeticalImplicants}
-    />
-  );
-  return primes;
+  steps.push({
+    type: "primeImplicants",
+    implicants: alphabeticalImplicants,
+  });
+  return { steps, primes };
 }
