@@ -38,7 +38,7 @@ const Letter = ({ onNextPage }) => {
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
       <Paper className="start-container">
-        <form noValidate autoComplete="off">
+        <form noValidate autoComplete="off" onSubmit={solve}>
           <div className="start-container-item">
             <center>
               <Typography variant="h4">Name The Inputs</Typography>
@@ -47,12 +47,14 @@ const Letter = ({ onNextPage }) => {
           <div className="start-container-item">
             <TextField
               id="outlined-basic"
-              label={`Enter ${varStore.initInputsNumber} Letters`}
+              label={`Enter ${varStore.initInputsNumber} letters`}
+              placeholder={Array(varStore.initInputsNumber).fill(0).map((_, i) => String.fromCharCode(65 + i)).join("")}
               helperText={errMsg ? errMsg : null}
               error={!!errMsg}
               onChange={handleChange}
               size="small"
               variant="filled"
+              autoFocus
             />
           </div>
           <div className="start-container-item">
@@ -61,6 +63,7 @@ const Letter = ({ onNextPage }) => {
                 endIcon={<CalculateRounded />}
                 variant="contained"
                 color="primary"
+                type="submit"
                 onClick={solve}
               >
                 Solve

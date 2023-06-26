@@ -1,24 +1,32 @@
-.root {
+body {
+  position: absolute;
   background-image: url(./assets/img/bg.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  background-color: #073741;
   overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 .centering-root {
   display: flex;
-  min-height: 100vh;
   margin: 0;
+  max-width: calc(100% - 30px);
   padding-left: 15px;
   padding-right: 15px;
   justify-content: center;
+  align-items: center;
 }
 
 .centered-container {
   align-self: center;
   width: 100%;
   max-width: 600px;
+  margin: 15px 0;
 }
 
 .start-container {
@@ -39,7 +47,7 @@
 }
 
 .mansory {
-  margin: 0 auto;
+  margin: 15px auto;
 }
 
 .grid-item {

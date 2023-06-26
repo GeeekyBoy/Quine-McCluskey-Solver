@@ -69,7 +69,7 @@ const Start = ({ onNextPage }) => {
   return (
     <Fade timeout={500} in={isShown} appear={isShown}>
       <Paper className="start-container">
-        <form noValidate autoComplete="off">
+        <form noValidate autoComplete="off" onSubmit={nextPage}>
           <div className="start-container-item">
             <center>
               <Typography variant="h4" className="logo">
@@ -82,6 +82,7 @@ const Start = ({ onNextPage }) => {
             <TextField
               id="minterms"
               label="Minterms"
+              placeholder="(e.g. 0, 1, 2, 5, 7, 8, 9, 10, 13, 15)"
               helperText={mintermsErrMsg ? mintermsErrMsg : null}
               error={!!mintermsErrMsg}
               onChange={handleMintermsChange}
@@ -93,6 +94,7 @@ const Start = ({ onNextPage }) => {
             <TextField
               id="donot-cares"
               label="Don't Cares"
+              placeholder="(e.g. 3, 4)"
               helperText={donotCaresErrMsg ? donotCaresErrMsg : null}
               error={!!donotCaresErrMsg}
               onChange={handleDonotCaresChange}
@@ -132,6 +134,7 @@ const Start = ({ onNextPage }) => {
                 endIcon={<ArrowForwardRounded />}
                 variant="contained"
                 color="primary"
+                type="submit"
                 onClick={nextPage}
               >
                 Next
