@@ -1,10 +1,18 @@
 # Quine McCluskey Solver
 
+<div align="center">
+
+  [![GitHub license](https://img.shields.io/badge/license-AGPLv3-blue.svg)](https://github.com/GeeekyBoy/Quine-McCluskey-Solver/blob/main/LICENSE)
+  [![GitHub stars](https://img.shields.io/github/stars/GeeekyBoy/Quine-McCluskey-Solver.svg?style=social&label=Star)](https://github.com/GeeekyBoy/Quine-McCluskey-Solver)
+  
+</div>
+
 ## Table Of Contents:
 
 * [Overview](#overview)
 * [Objectives](#objectives)
 * [Features](#features)
+* [Contributing](#contributing)
 * [License](#license)
 
 ## Overview
@@ -31,6 +39,12 @@ Quine McCluskey Solver is designed to be an easy solution for digital design stu
 
 * **Compatible & Responsive:** One of the features of our application is the simplicity and responsiveness of its GUI which makes it viewable on any device form. In addition, it can run on any operating system having modern web browser installed.
 
+## Contributing
+
+Read our [contributing guide](CONTRIBUTING.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to Quine McCluskey Solver.
+
 ## License
 
 *Quine McCluskey Solver* is released under the **GNU AGPLv3** license.
+
+![View count](https://hits-app.vercel.app/hits?url=https://github.com/GeeekyBoy/Quine-McCluskey-Solver&bgRight=000&bgLeft=000)
