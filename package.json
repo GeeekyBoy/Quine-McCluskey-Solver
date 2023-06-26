@@ -2,21 +2,21 @@
   "name": "quine-mccluskey-solver",
   "version": "1.0.0",
   "author": "GeeekyBoy",
-  "description": "Online Quine McCluskey Solver !",
+  "description": "An online Quine-McCluskey solver for boolean functions",
   "keywords": [
+    "solver",
     "react",
     "material"
   ],
   "main": "index.js",
   "homepage": "./",
   "dependencies": {
-    "@mui/material": "5.13.5",
+    "@mui/material": "5.13.6",
     "@mui/icons-material": "5.11.16",
     "fontsource-rubik": "4.0.0",
-    "history": "5.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.13.0"
+    "react-router-dom": "6.14.0"
   },
   "devDependencies": {
     "vite": "4.3.9",
