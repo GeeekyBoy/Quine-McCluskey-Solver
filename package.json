@@ -2,7 +2,7 @@
   "name": "quine-mccluskey-solver",
   "version": "1.0.0",
   "author": "GeeekyBoy",
-  "description": "An online Quine-McCluskey solver for boolean functions",
+  "description": "A Quine McCluskey solver for minimization of boolean functions",
   "keywords": [
     "solver",
     "react",
@@ -13,15 +13,16 @@
   "dependencies": {
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
-    "@mui/material": "5.13.6",
     "@mui/icons-material": "5.11.16",
+    "@mui/material": "5.13.6",
     "fontsource-rubik": "4.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "vite": "4.3.9",
     "@vitejs/plugin-react": "4.0.1",
+    "vite": "4.3.9",
+    "vite-plugin-pwa": "^0.16.4",
     "vite-plugin-svgr": "3.2.0"
   },
   "scripts": {
