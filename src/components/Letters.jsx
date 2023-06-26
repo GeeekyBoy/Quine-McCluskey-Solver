@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
-import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import CalculateRounded from "@mui/icons-material/CalculateRounded";
 import TextField from "@mui/material/TextField";
@@ -8,8 +7,7 @@ import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
 import { Fade } from "@mui/material";
 
-const Letter = () => {
-  const navigate = useNavigate();
+const Letter = ({ onNextPage }) => {
   const [isShown, setIsShown] = useState(true);
   const [isLettersChanged, setIsLettersChanged] = useState(false);
   const [letters, setLetters] = useState("");
@@ -32,7 +30,7 @@ const Letter = () => {
     } else if (!errMsg) {
       varStore.initInputLetters = letters.split("");
       setIsShown(false);
-      setTimeout(() => navigate("/result"), 500);
+      setTimeout(() => onNextPage(), 500);
     }
   };
   document.body.classList.add("centering-root");

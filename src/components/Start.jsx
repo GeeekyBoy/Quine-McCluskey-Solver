@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import FormGroup from "@mui/material/FormGroup";
@@ -11,8 +10,7 @@ import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
 import { Fade } from "@mui/material";
 
-const Start = () => {
-  const navigate = useNavigate();
+const Start = ({ onNextPage }) => {
   const [isShown, setIsShown] = useState(true);
   const [isMintermsChanged, setIsMintermsChanged] = useState(false);
   const [minterms, setMinterms] = useState("");
@@ -58,11 +56,11 @@ const Start = () => {
       varStore.initInputsNumber = Math.max(inputsCount, minInputsCount);
       if (mintermsPlusDonotcares.length === 2 ** varStore.initInputsNumber) {
         setIsShown(false);
-        setTimeout(() => navigate("/no-minimization"), 500);
+        setTimeout(() => onNextPage(true), 500);
       } else {
         varStore.isComplementAvail = isComplementAvail;
         setIsShown(false);
-        setTimeout(() => navigate("/letters"), 500);
+        setTimeout(() => onNextPage(false), 500);
       }
     }
   };

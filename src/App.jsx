@@ -1,29 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Route, Routes, Navigate } from "react-router";
+import React, { useEffect, useState, createContext } from "react";
 import Result from "./components/Result";
 import Letters from "./components/Letters";
 import NoMinimization from "./components/NoMinimization"
 import Start from "./components/Start";
 
 function App() {
-  const navigate = useNavigate();
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [wizardStep, setWizardStep] = useState(0);
   useEffect(() => {
     document.body.classList.remove("loadingBody");
     document.getElementById("splash").remove();
     document.body.classList.add("root");
-    navigate("/", { replace: true });
-    setIsFirstLoad(false);
   }, []);
-  return isFirstLoad ? null : (
-    <Routes>
-      <Route path="/" element={<Start />} />
-      <Route exact path="/no-minimization" element={<NoMinimization />} />
-      <Route exact path="/letters" element={<Letters />} />
-      <Route exact path="/result" element={<Result />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+  return (
+    wizardStep === 0 ? <Start onNextPage={(alt) => setWizardStep(alt ? 1 : 2)} /> :
+    wizardStep === 1 ? <NoMinimization onNextPage={() => setWizardStep(0)} /> :
+    wizardStep === 2 ? <Letters onNextPage={() => setWizardStep(3)} /> :
+    wizardStep === 3 ? <Result onNextPage={() => setWizardStep(0)} /> :
+    null
   );
 }
 

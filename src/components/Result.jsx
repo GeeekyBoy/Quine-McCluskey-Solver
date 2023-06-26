@@ -1,6 +1,5 @@
 import { Fade } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import minimizeFunction from "../core/minimizeFunction";
 import varStore from "../utils/varStore";
 import SelectionTable from "./SelectionTable";
@@ -11,14 +10,13 @@ import TabularTable from "./TabularTable";
 import MinimizedFunction from "./MinimizedFunction";
 import FunctionNotation from "./FunctionNotation";
 
-const Result = () => {
+const Result = ({ onNextPage }) => {
   const [steps, setSteps] = useState(null);
-  const navigate = useNavigate();
   const handleNewFunction = () => {
     setSteps(null);
     setTimeout(() => {
       varStore.reset();
-      navigate("/");
+      onNextPage();
     }, 500);
   };
   document.body.classList.remove("centering-root");

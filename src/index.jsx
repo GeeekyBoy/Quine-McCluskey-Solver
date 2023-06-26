@@ -1,6 +1,5 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { HashRouter } from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import App from "./App";
 import "fontsource-rubik";
@@ -38,8 +37,6 @@ const root = createRoot(container);
 
 root.render(
   <ThemeProvider theme={theme}>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <App />
   </ThemeProvider>
 );

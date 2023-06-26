@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import noMinimizationImg from "../assets/img/no-minimization.gif";
@@ -9,14 +8,13 @@ import Typography from "@mui/material/Typography";
 import varStore from "../utils/varStore";
 import { Fade } from "@mui/material";
 
-const NoMinimization = () => {
-  const navigate = useNavigate();
+const NoMinimization = ({ onNextPage }) => {
   const [isShown, setIsShown] = useState(true);
   const handleNewFunction = () => {
     setIsShown(false);
     setTimeout(() => {
       varStore.reset();
-      navigate("/");
+      onNextPage();
     }, 500);
   };
   document.body.classList.add("centering-root");
