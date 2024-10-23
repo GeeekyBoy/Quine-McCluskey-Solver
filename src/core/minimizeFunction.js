@@ -28,11 +28,11 @@ export default function () {
     essentials.push(...(uniqueMintermRes.essentials || []));
     primes = uniqueMintermRes.primes;
     if (!primes.length) break;
-    rowDominanceRes = applyRowDominance(cloneObj(primes));
+    const rowDominanceRes = applyRowDominance(cloneObj(primes));
     steps.push(...rowDominanceRes.steps);
     primes = rowDominanceRes.primes;
     if (!primes.length) break;
-    colDominanceRes = applyColDominance(cloneObj(primes));
+    const colDominanceRes = applyColDominance(cloneObj(primes));
     steps.push(...colDominanceRes.steps);
     primes = colDominanceRes.primes;
     if (!primes.length) break;
