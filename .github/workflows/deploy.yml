@@ -21,6 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: build-publish
-      uses: bitovi/github-actions-react-to-ghp@v1.2.0
+      uses: bitovi/github-actions-react-to-ghp@v1.2.4
       with:
         path: dist
